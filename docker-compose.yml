@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  web_project:
+    build: .
+    container_name:  React_Movie
+    volumes: 
+      - ./public:/app/public
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./yarn.lock:/app/yarn.lock
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    ports:
+      - 9999:3000
+    # command: serve -p 3000 -s ./dist
+    # command: bash
