@@ -24,8 +24,16 @@ class App extends Component {
                     invoked with one argument: (value).
                   </p>
                 </div>
-                <div className="col-5">
-                  <h1>fwefnwelnfk</h1>
+                <div className="col-5 pb-5 d-flex align-items-end justify-content-center">
+                  <button type="button" className="btn btn-success">
+                    Trailer
+                  </button>
+                  <button type="button" className="ml-3 btn btn-outline-success">
+                    Detail
+                  </button>
+                  <button type="button" className="ml-3 btn btn-outline-primary">
+                    Favorite
+                  </button>
                 </div>
               </div>
             </div>
