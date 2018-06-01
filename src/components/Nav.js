@@ -2,8 +2,41 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import logo from "../logo.svg";
 
+function hoverable(WrappedComponent, propName = "hover") {
+  return class HoverableComponent extends Component {
+    constructor(props) {
+      super(props);
+
+      this.state = { hovered: false };
+    }
+
+    turnHoverOn() {
+      this.setState({ hovered: true });
+      console.log("Hello xxxxon", propName); // log is here
+    }
+
+    turnHoverOff() {
+      this.setState({ hovered: false });
+      console.log("Hello turnHoverOff", this.props); // log is here
+    }
+
+    render() {
+      const props = { [propName]: this.state.hovered, ...this.props };
+      return (
+        <div
+          onMouseEnter={() => this.turnHoverOn()}
+          onMouseLeave={() => this.turnHoverOff()}
+        >
+          <WrappedComponent {...props} />
+        </div>
+      );
+    }
+  };
+}
+
 class Nav extends Component {
   render() {
+    console.log("Hello this.props", this.props); // log is here
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,4 +88,4 @@ class Nav extends Component {
 
 Nav.propTypes = {};
 
-export default Nav;
+export default hoverable(Nav, "5566");

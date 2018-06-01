@@ -1,11 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Exo+2|Poppins|Quicksand|Roboto+Slab|Sunflower:300");
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-}
-
-.App {
-  text-align: center;
+  // font-family: "Roboto Slab", serif;
+  // font-family: "Poppins", sans-serif;
+  // font-family: "Sunflower", sans-serif;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 0.8px;
 }
 
 .App-logo {
@@ -42,10 +44,11 @@ body {
 }
 
 .AppJumbotron {
-  background-image: url("https://picsum.photos/2000");
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  // background-position: top;
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
   min-height: 50vh;
 }
 
