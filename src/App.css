@@ -40,3 +40,6 @@ body {
   width: 100vw;
   color: white;
   background: linear-gradient(transparent, black); }
+
+.MovieDetailJumbotron {
+  margin-top: -200px; }
