@@ -41,5 +41,11 @@ body {
   color: white;
   background: linear-gradient(transparent, black); }
 
+.MovieDetailJumbotronMask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 100; }
+
 .MovieDetailJumbotron {
-  margin-top: -200px; }
+  z-index: 101; }
