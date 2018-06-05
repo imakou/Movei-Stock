@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Nav from "../components/Nav";
 import MovieCard from "./MovieCard";
-import { Badge, Icon } from "antd";
+import { Icon } from "antd";
 
 class Home extends Component {
   render() {
