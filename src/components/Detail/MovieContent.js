@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Tabs, Badge, Card, Icon, Avatar } from "antd";
+import MovieBasicInfo from "./MovieBasicInfo";
 const TabPane = Tabs.TabPane;
 const { Meta } = Card;
 
-class MovieDetailContent extends Component {
+class MovieContent extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
           <div className="col-md-8 col-sm-12">
             <Tabs defaultActiveKey="1">
@@ -165,13 +166,15 @@ class MovieDetailContent extends Component {
               </TabPane>
             </Tabs>
           </div>
-          <div className="col-md-3 col-sm-12">2</div>
+          <div className="col-md-3 col-sm-12">
+            <MovieBasicInfo />
+          </div>
         </div>
       </div>
     );
   }
 }
 
-MovieDetailContent.propTypes = {};
+MovieContent.propTypes = {};
 
-export default MovieDetailContent;
+export default MovieContent;

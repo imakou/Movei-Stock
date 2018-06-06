@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import * as Vibrant from "node-vibrant";
-import MovieDetailContent from "./MovieDetailContent";
+import MovieContent from "../components/Detail/MovieContent";
 class MovieDetail extends Component {
   render() {
     console.log("Hello this.props", this.props); // log is here
@@ -79,7 +79,7 @@ class MovieDetail extends Component {
             </div>
           </div>
         </section>
-        <MovieDetailContent />
+        <MovieContent />
       </React.Fragment>
     );
   }

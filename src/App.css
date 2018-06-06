@@ -34,7 +34,14 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 80%;
-  min-height: 50vh; }
+  min-height: 50vh;
+  color: white; }
+
+.MemberJumbotron {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  color: white; }
 
 .AppDescription {
   width: 100vw;

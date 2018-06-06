@@ -6,6 +6,7 @@ import "antd/dist/antd.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Home from "./containers/Home";
 import MovieDetail from "./containers/MovieDetail";
+import Member from "./containers/Member";
 import Nav from "./components/Nav";
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/movie/:id" component={MovieDetail} />
+            <Route exact path="/member" component={Member} />
           </Switch>
           <footer className="bg-info">
             <div className="container">
