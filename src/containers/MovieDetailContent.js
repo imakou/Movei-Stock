@@ -76,7 +76,57 @@ class MovieDetailContent extends Component {
                 <div className="col-md-12 mt-5">
                   <h3>Reviews</h3>
                   <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 mb-3">
+                      <Card>
+                        <Meta
+                          avatar={
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                          }
+                          title={
+                            <React.Fragment>
+                              <div className="d-flex flex-row">
+                                <h6>Hello</h6>
+                                <Badge
+                                  count={109}
+                                  style={{ backgroundColor: "#52c41a" }}
+                                  className="ml-2"
+                                />
+                              </div>
+                              <small className="text-secondary">
+                                Written by Screen-Space on April 25, 2018
+                              </small>
+                            </React.Fragment>
+                          }
+                          description="This is the description.The story may not be the most original, with its Shakespearean turn overs, but it is well shaped and Serkis performance is remarkable.The animation of the apes, which was already superb in the previous movie, finally reaches a level in which you can believe they are more real than the human actors.Maybe a bit too long, but a good time for a not totally dumb movie."
+                        />
+                      </Card>
+                    </div>
+                    <div className="col-12 mb-3">
+                      <Card>
+                        <Meta
+                          avatar={
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                          }
+                          title={
+                            <React.Fragment>
+                              <div className="d-flex flex-row">
+                                <h6>Hello</h6>
+                                <Badge
+                                  count={109}
+                                  style={{ backgroundColor: "#52c41a" }}
+                                  className="ml-2"
+                                />
+                              </div>
+                              <small className="text-secondary">
+                                Written by Screen-Space on April 25, 2018
+                              </small>
+                            </React.Fragment>
+                          }
+                          description="This is the description.The story may not be the most original, with its Shakespearean turn overs, but it is well shaped and Serkis performance is remarkable.The animation of the apes, which was already superb in the previous movie, finally reaches a level in which you can believe they are more real than the human actors.Maybe a bit too long, but a good time for a not totally dumb movie."
+                        />
+                      </Card>
+                    </div>
+                    <div className="col-12 mb-3">
                       <Card>
                         <Meta
                           avatar={

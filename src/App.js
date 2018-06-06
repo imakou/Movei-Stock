@@ -20,6 +20,15 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/movie/:id" component={MovieDetail} />
           </Switch>
+          <footer className="bg-info">
+            <div className="container">
+              <div className="row">
+                <div className="col-12 text-center">
+                  <p>Hello World.</p>
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>
       </Router>
     );
