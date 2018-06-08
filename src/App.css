@@ -37,22 +37,24 @@ body {
   min-height: 50vh;
   color: white; }
 
-.MemberJumbotron {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 20%;
-  color: white; }
-
 .AppDescription {
   width: 100vw;
   color: white;
   background: linear-gradient(transparent, black); }
 
-.MovieDetailJumbotronMask {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 100; }
+.MemberJumbotron {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  color: white;
+  height: 35vh; }
 
-.MovieDetailJumbotron {
-  z-index: 101; }
+.MemberJumbotronInfo {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.MemberJumbotronDesc {
+  margin-bottom: 10px; }
+  .MemberJumbotronDesc h6 small {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 2px white solid; }
