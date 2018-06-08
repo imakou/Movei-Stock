@@ -29,15 +29,15 @@ class Member extends Component {
                 <div className="col-md-12">
                   <div>
                     <h1>Imakou</h1>
-                    <div className="row MemberJumbotronDesc d-flex justify-content-start">
-                      <div className="col-md-4 col-sm-12">
+                    <div className="row no-gutters MemberJumbotronDesc d-flex justify-content-start">
+                      <div className="">
                         <h6>
                           <small>Member Type: Standard</small>
                         </h6>
                       </div>
-                      <div className="col-md-4 col-sm-12">
+                      <div className="">
                         <h6>
-                          <small>Standard Member</small>
+                          <small>Collection: 5</small>
                         </h6>
                       </div>
                     </div>
