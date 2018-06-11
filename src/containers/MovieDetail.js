@@ -36,7 +36,7 @@ class MovieDetail extends Component {
                 <div className="row">
                   <div className="col-12">
                     <h3>Supergirl</h3>
-                    <h4>Overview</h4>
+                    <h4>Overviews</h4>
                     <p>
                       Twenty-four-year-old Kara Zor-El, who was taken in by the Danvers
                       family when she was 13 after being sent away from Krypton, must
