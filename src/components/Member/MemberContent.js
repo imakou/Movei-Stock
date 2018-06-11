@@ -1,16 +1,22 @@
 import React, { Component } from "react";
-import { List } from "antd";
+import { List, Button, Tooltip, Card, Icon, Rate } from "antd";
 import PropTypes from "prop-types";
+import MemberFavorites from "./MemberFavorites";
+import MemberRecentViewed from "./MemberRecentViewed";
+import MemberComment from "./MemberComment";
+const { Meta } = Card;
 
 class MemberContent extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row  pt-5 pb-5">
-          <div className="col-md-8">
-            <h1>Hello World</h1>
+        <div className="row pt-5 pb-5">
+          <div className="col-md-9">
+            <MemberFavorites />
+            <MemberRecentViewed />
+            <MemberComment />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-3">
             <List
               header={<div>Header</div>}
               footer={<div>Footer</div>}

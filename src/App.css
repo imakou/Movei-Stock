@@ -58,3 +58,27 @@ body {
     margin-right: 15px;
     padding-right: 15px;
     border-right: 2px white solid; }
+
+.imgScale {
+  max-width: 100%;
+  transition: all 0.3s; }
+  .imgScale:hover {
+    transform: scale(1.1); }
+
+.MovieImgDesc {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.MovieImgDescRate {
+  position: absolute;
+  background-color: rgba(122, 122, 122, 0.432); }
+
+.ant-card-actions {
+  background-color: #fff !important; }
+
+.MovieCard:hover {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
+  border-color: rgba(0, 0, 0, 0.09); }
