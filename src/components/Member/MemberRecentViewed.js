@@ -17,19 +17,16 @@ class MemberRecentViewed extends Component {
           <div className="col-md-3 col-sm-12 mb-3">
             <Card
               className="MovieCard"
-              bodyStyle={{ padding: "10px" }}
+              bodyStyle={{ padding: "13px" }}
               cover={
                 <img
-                  className="img-fluid"
+                  className="img-fluid imgScale"
                   alt="example"
                   src="https://image.tmdb.org/t/p/w300/2qou2R47XZ1N6SlqGZcoCHDyEhN.jpg"
                 />
               }
-              actions={[<span>Detail</span>, <span>Delete</span>]}
             >
-              <div className="d-flex justify-content-center">
-                <Rate allowHalf defaultValue={2.5} />
-              </div>
+              <Meta title={<small>Jurassic World: Fallen Kingdom</small>} />
             </Card>
           </div>
           <div className="col-md-3 col-sm-12 mb-3">

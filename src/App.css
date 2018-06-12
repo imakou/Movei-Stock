@@ -85,9 +85,12 @@ body {
   position: absolute;
   background-color: rgba(122, 122, 122, 0.432); }
 
-.ant-card-actions {
-  background-color: #fff !important; }
-
 .MovieCard:hover {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
   border-color: rgba(0, 0, 0, 0.09); }
+
+.ant-card-actions {
+  background-color: #fff !important; }
+
+.ant-card-cover {
+  overflow: hidden; }

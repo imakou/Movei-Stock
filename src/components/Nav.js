@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Avatar, Menu, Icon, Dropdown, Button } from "antd";
 import logo from "../logo.svg";
 
 function hoverable(WrappedComponent, propName = "hover") {
@@ -37,6 +38,23 @@ function hoverable(WrappedComponent, propName = "hover") {
 class Nav extends Component {
   render() {
     console.log("Hello this.props", this.props); // log is here
+    const content = (
+      <Menu style={{ width: "150px" }}>
+        <Menu.Item key="1">
+          <Icon type="user" /> Account
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="2">
+          <Icon type="info-circle-o" /> Summary
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="3">
+          <span onClick={this.handleLogOut}>
+            <Icon type="poweroff" /> Log Out
+          </span>
+        </Menu.Item>
+      </Menu>
+    );
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -78,6 +96,14 @@ class Nav extends Component {
                   Search
                 </button>
               </form>
+            </div>
+            <div className="ml-4">
+              <Dropdown overlay={content} placement="bottomCenter">
+                <Avatar size="large" icon="user" />
+              </Dropdown>
+            </div>
+            <div className="ml-4">
+              <Button>Login</Button>
             </div>
           </div>
         </nav>

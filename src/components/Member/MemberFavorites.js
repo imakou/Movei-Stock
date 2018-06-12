@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { List, Button, Tooltip, Card, Icon, Rate } from "antd";
+import { List, Button, Popconfirm, Tooltip, Card, Icon, Rate } from "antd";
 const { Meta } = Card;
 
 class MemberFavorites extends Component {
+  handleDelete = () => {
+    console.log("Hello delete"); // log is here
+  };
   render() {
     return (
       <div className="col-md-12 mb-4">
@@ -20,12 +23,23 @@ class MemberFavorites extends Component {
               bodyStyle={{ padding: "10px" }}
               cover={
                 <img
-                  className="img-fluid"
+                  className="img-fluid imgScale"
                   alt="example"
                   src="https://image.tmdb.org/t/p/w300/2qou2R47XZ1N6SlqGZcoCHDyEhN.jpg"
                 />
               }
-              actions={[<span>Detail</span>, <span>Delete</span>]}
+              actions={[
+                <span>Detail</span>,
+                <Popconfirm
+                  placement="top"
+                  title={"Delete the move from your favorite list?"}
+                  onConfirm={this.handleDelete}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <span>Delete</span>
+                </Popconfirm>
+              ]}
             >
               <div className="d-flex justify-content-center">
                 <Rate allowHalf defaultValue={2.5} />
