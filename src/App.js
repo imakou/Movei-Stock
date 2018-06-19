@@ -4,13 +4,15 @@ import logo from "./logo.svg";
 import "./App.css";
 import "antd/dist/antd.min.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "./css/social.css";
 import Home from "./containers/Home";
 import MovieDetail from "./containers/MovieDetail";
 import Member from "./containers/Member";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Nav";
 
 class App extends Component {
   render() {
+    console.log("Hello process.env", process.env); // log is here
     return (
       <Router>
         <div className="App">

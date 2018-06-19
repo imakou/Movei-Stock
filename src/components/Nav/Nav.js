@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { Avatar, Menu, Icon, Dropdown, Button } from "antd";
-import logo from "../logo.svg";
+import logo from "../../logo.svg";
+import LoginModal from "./LoginModal";
+import SearchBar from "./SearchBar";
 
 function hoverable(WrappedComponent, propName = "hover") {
   return class HoverableComponent extends Component {
@@ -59,7 +62,9 @@ class Nav extends Component {
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
-            <img className="NavLogo" src={logo} alt="" />
+            <Link to="/">
+              <img className="NavLogo" src={logo} alt="" />
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -73,29 +78,7 @@ class Nav extends Component {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">
-                    Home <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Link
-                  </a>
-                </li>
-              </ul>
-              <form className="form-inline my-2 my-lg-0">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                  Search
-                </button>
-              </form>
+              <SearchBar />
             </div>
             <div className="ml-4">
               <Dropdown overlay={content} placement="bottomCenter">
@@ -103,7 +86,7 @@ class Nav extends Component {
               </Dropdown>
             </div>
             <div className="ml-4">
-              <Button>Login</Button>
+              <LoginModal />
             </div>
           </div>
         </nav>

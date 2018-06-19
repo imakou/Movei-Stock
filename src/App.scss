@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Exo+2|Poppins|Quicksand|Roboto+Slab|Sunflower:300");
-
 body {
   margin: 0;
   padding: 0;
@@ -123,6 +122,14 @@ body {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
   border-color: rgba(0, 0, 0, 0.09);
 }
+
+.NavSearchBar {
+  width: 100%;
+}
+
+.NavSearchBarInput {
+  width: 250px !important;
+}
 // Overwrite ANTD's style
 .ant-card-actions {
   background-color: #fff !important;
@@ -130,3 +137,14 @@ body {
 .ant-card-cover {
   overflow: hidden;
 }
+#LoginForm .login-form {
+  width: 100%;
+}
+#LoginForm .login-form-forgot {
+  float: right;
+}
+#LoginForm .login-form-button {
+  width: 100%;
+}
+
+//

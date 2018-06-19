@@ -346,7 +346,7 @@ class MovieCard extends Component {
                     </React.Fragment>
                   }
                   description={
-                    <div class="col-12 text-truncate">
+                    <div className="col-12 text-truncate">
                       wegijerogjorjtghowerjghuierhwgoerjrgoejrgerhgwifwue
                     </div>
                   }

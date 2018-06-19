@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Nav from "../components/Nav";
+import Nav from "../components/Nav/Nav";
 import MovieCard from "./MovieCard";
+import * as actions from "../actions/HomeActions";
 import { Icon } from "antd";
+import { connect } from "react-redux";
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.fetch_by_keywords();
+  }
+
   render() {
     return (
       <div>
@@ -53,4 +59,19 @@ class Home extends Component {
 
 Home.propTypes = {};
 
-export default Home;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetch_by_keywords: () => {
+      dispatch(actions.fetch_by_keywords());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
