@@ -1,172 +1,41 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Tabs, Badge, Card, Icon, Avatar } from "antd";
+import { Tabs, Badge, Card, Icon, Avatar, Spin } from "antd";
+import { connect } from "react-redux";
+import * as actions from "../actions/MovieActions";
+import MovieCard from "../components/MovieCard/MovieCard";
+
 const { Meta } = Card;
 const TabPane = Tabs.TabPane;
 
-class MovieCard extends Component {
+class MovieCards extends Component {
+  componentDidMount() {
+    this.props.fetch_pop_movies();
+  }
+  renderMovieCard = value => {
+    const { popMovies } = this.props;
+    if (popMovies.length === 0) {
+      return (
+        <div className="d-flex justify-content-center w-100 mt-5">
+          <Spin size="large" />
+        </div>
+      );
+    } else {
+      return popMovies.map(e => {
+        console.log("Hello e", e); // log is here
+        return <MovieCard key={e.key} data={e} />;
+      });
+    }
+  };
   render() {
     return (
       <React.Fragment>
         <div className="container pt-5 pb-5">
           <div className="row">
-            <div className="col-9">
+            <div className="col-10">
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Upcoming" key="1">
-                  <div className="row ">
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-3 mb-4">
-                      <div className="border shadow-sm bg-white">
-                        <img
-                          className="img-fluid"
-                          src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
-                          alt=""
-                        />
-                        <div className="p-2 d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 className="m-0 text-left">DeadPool2</h6>
-                            <h6 className="m-0 text-left text-black-50">
-                              <small>May 17, 2018</small>
-                            </h6>
-                          </div>
-
-                          <Badge count={109} style={{ backgroundColor: "#52c41a" }} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div className="row ">{this.renderMovieCard()}</div>
                 </TabPane>
                 <TabPane tab="Now Playing" key="2">
                   <div className="row ">
@@ -326,7 +195,7 @@ class MovieCard extends Component {
                 </TabPane>
               </Tabs>
             </div>
-            <div className="col-3 mb-4">
+            <div className="col-2 mb-4">
               <h4>Reviews</h4>
               <Card
                 className="shadow-sm"
@@ -443,6 +312,26 @@ class MovieCard extends Component {
   }
 }
 
-MovieCard.propTypes = {};
+MovieCards.propTypes = {
+  fetch_pop_movies: PropTypes.func,
+  popMovies: PropTypes.array
+};
 
-export default MovieCard;
+const mapStateToProps = state => {
+  return {
+    popMovies: state.movies.popMovies
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetch_pop_movies: () => {
+      dispatch(actions.fetch_pop_movies());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieCards);

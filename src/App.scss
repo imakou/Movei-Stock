@@ -92,9 +92,6 @@ body {
       border-right: 2px white solid;
     }
   }
-  span {
-    // margin-right: 15px;
-  }
 }
 
 .imgScale {
@@ -123,6 +120,15 @@ body {
   border-color: rgba(0, 0, 0, 0.09);
 }
 
+.MovieBigCard {
+  overflow: hidden;
+}
+
+.MovieTitleHeader {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .NavSearchBar {
   width: 100%;
 }

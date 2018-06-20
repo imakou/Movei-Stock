@@ -1,16 +1,37 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import * as actions from "../actions/MovieActions";
+import { connect } from "react-redux";
 import * as Vibrant from "node-vibrant";
 import MovieContent from "../components/Detail/MovieContent";
 class MovieDetail extends Component {
+  state = {
+    currentMoive: this.props.currentMoive
+  };
+  static getDerivedStateFromProps(props, state) {
+    console.log("Hello getDerivedStateFromProps", props); // log is here
+    const { currentMoive } = props;
+    if (currentMoive) {
+      return { currentMoive };
+    }
+    return null;
+  }
+  componentDidMount() {
+    const movieId = this.props.match.params.id;
+    this.props.fetch_movie_detail(movieId);
+  }
+
   render() {
-    console.log("Hello this.props", this.props); // log is here
+    // console.log("Hello this.props", this.props); // log is here
+    const { currentMoive } = this.state;
+    console.log("Hello this.state", currentMoive); // log is here
+    // console.log("Hello currentMoive", currentMoive); // log is here
     Vibrant.from(
       "https://image.tmdb.org/t/p/w1400_and_h450_face/gBmrsugfWpiXRh13Vo3j0WW55qD.jpg"
     )
       .getSwatches()
       .then(palette => console.log(palette.DarkMuted.getRgb()));
-    return (
+    const content = currentMoive ? (
       <React.Fragment>
         <section
           style={{
@@ -81,10 +102,29 @@ class MovieDetail extends Component {
         </section>
         <MovieContent />
       </React.Fragment>
+    ) : (
+      <div>wefejwf</div>
     );
+    return content;
   }
 }
 
 MovieDetail.propTypes = {};
+const mapStateToProps = state => {
+  return {
+    currentMoive: state.movies.currentMoive
+  };
+};
 
-export default MovieDetail;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetch_movie_detail: movieId => {
+      dispatch(actions.fetch_movie_detail(movieId));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieDetail);

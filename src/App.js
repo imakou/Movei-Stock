@@ -12,7 +12,6 @@ import Nav from "./components/Nav/Nav";
 
 class App extends Component {
   render() {
-    console.log("Hello process.env", process.env); // log is here
     return (
       <Router>
         <div className="App">

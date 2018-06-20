@@ -40,7 +40,6 @@ function hoverable(WrappedComponent, propName = "hover") {
 
 class Nav extends Component {
   render() {
-    console.log("Hello this.props", this.props); // log is here
     const content = (
       <Menu style={{ width: "150px" }}>
         <Menu.Item key="1">

@@ -89,6 +89,14 @@ body {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
   border-color: rgba(0, 0, 0, 0.09); }
 
+.MovieBigCard {
+  overflow: hidden; }
+
+.MovieTitleHeader {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
+
 .NavSearchBar {
   width: 100%; }
 

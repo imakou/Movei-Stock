@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Nav from "../components/Nav/Nav";
-import MovieCard from "./MovieCard";
-import * as actions from "../actions/HomeActions";
+import MovieCards from "./MovieCards";
+import * as actions from "../actions/MovieActions";
 import { Icon } from "antd";
 import { connect } from "react-redux";
 
 class Home extends Component {
-  componentDidMount() {
-    this.props.fetch_by_keywords();
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -50,7 +48,7 @@ class Home extends Component {
           </div>
         </section>
         <section className="bg-light">
-          <MovieCard />
+          <MovieCards />
         </section>
       </div>
     );
@@ -64,11 +62,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    fetch_by_keywords: () => {
-      dispatch(actions.fetch_by_keywords());
-    }
-  };
+  return {};
 };
 
 export default connect(
