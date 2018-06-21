@@ -22,8 +22,7 @@ class MovieCards extends Component {
       );
     } else {
       return popMovies.map(e => {
-        console.log("Hello e", e); // log is here
-        return <MovieCard key={e.key} data={e} />;
+        return <MovieCard key={e.id} data={e} />;
       });
     }
   };

@@ -48,7 +48,7 @@ export function fetch_pop_movies() {
 export function fetch_movie_detail(movieId) {
   return async (dispatch, getState) => {
     try {
-      const { data } = await Axios.get("/337167");
+      const { data } = await Axios.get(`/${movieId}`);
       console.log("Hello data", data); // log is here
       // console.log("Hello results", random); // log is here
       dispatch(fetch_movie_detail_successful(data));
