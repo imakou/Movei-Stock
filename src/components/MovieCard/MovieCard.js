@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Tabs, Badge, Card, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
-import TextTruncate from "react-text-truncate";
 
 class MovieCard extends Component {
   render() {
     const { data } = this.props;
-    console.log("Hello this.props.data", this.props.data); // log is here
     return (
       <div className="col-md-3 col-sm-12 mb-4">
         <div className="border shadow-sm bg-white">
-          <div className="MovieBigCard">
+          <div className="OverFlowHidden">
             <Link to={`movie/${data.id}`}>
               <img
                 className="img-fluid imgScale"
@@ -28,7 +26,7 @@ class MovieCard extends Component {
               </h6>
             </div>
             <div className="col-2 p-0">
-              <span class="badge badge-pill badge-success">{data.vote_average}</span>
+              <span className="badge badge-pill badge-success">{data.vote_average}</span>
             </div>
           </div>
         </div>

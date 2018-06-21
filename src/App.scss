@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Exo+2|Poppins|Quicksand|Roboto+Slab|Sunflower:300");
+@import "node_modules/react-modal-video/scss/modal-video.scss";
+
 body {
   margin: 0;
   padding: 0;
@@ -125,7 +127,7 @@ body {
   border-color: rgba(0, 0, 0, 0.09);
 }
 
-.MovieBigCard {
+.OverFlowHidden {
   overflow: hidden;
 }
 
@@ -140,6 +142,19 @@ body {
 
 .NavSearchBarInput {
   width: 250px !important;
+}
+
+.hoverPoint {
+  cursor: pointer;
+}
+
+.avtarBG {
+  width: 50px;
+  height: 50px;
+  .avtarUserLetter {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.815);
+  }
 }
 // Overwrite ANTD's style
 .ant-card-actions {

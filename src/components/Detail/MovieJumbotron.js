@@ -2,16 +2,30 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import * as Vibrant from "node-vibrant";
 import MovieContent from "./MovieContent";
+import MovieTrailers from "./MovieTrailers";
+import { shuffle } from "lodash";
+import { Rate } from "antd";
 
 class MovieJumbotron extends Component {
-  render() {
-    console.log("Hello currentMoive", this.props.currentMoive); // log is here
+  state = {
+    BGColor: ""
+  };
+  componentDidMount() {
     const { currentMoive } = this.props;
+
     Vibrant.from(
       `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMoive.backdrop_path}`
     )
       .getSwatches()
-      .then(palette => console.log(palette.DarkMuted.getRgb()));
+      .then(palette => {
+        this.setState({ BGColor: `${palette.DarkMuted.getRgb()}` });
+      });
+  }
+
+  render() {
+    console.log("Hello currentMoive", this.props.currentMoive); // log is here
+    const { currentMoive } = this.props;
+    const trailerData = shuffle(currentMoive.videos).slice(0, 3);
     return (
       <React.Fragment>
         <section
@@ -24,7 +38,7 @@ class MovieJumbotron extends Component {
         >
           <div
             className="w-100 MovieDetailJumbotronMask"
-            style={{ backgroundColor: "rgba(46, 85, 81, 0.8)" }}
+            style={{ backgroundColor: `rgba(${this.state.BGColor}, 0.8)` }}
           />
           <div className="container MovieDetailJumbotron">
             <div className="row">
@@ -40,119 +54,23 @@ class MovieJumbotron extends Component {
               <div className="col-md-8 col-sm-12 p-4 d-flex flex-column justify-content-between">
                 <div className="row">
                   <div className="col-md-12 ">
-                    <h3>
-                      <div className="ant-row">
-                        <div className="ant-col-8 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                    </h3>
-                    <h4>
-                      <div className="ant-row">
-                        <div className="ant-col-5 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                    </h4>
-                    <div className="ant-card-loading-content">
-                      <div className="ant-row">
-                        <div className="ant-col-22 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-8 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-15 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-4 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-18 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-13 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-9 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-4 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-3 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-16 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-13 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-9 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-4 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-3 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-16 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
-                      <div className="ant-row">
-                        <div className="ant-col-8 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-6 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                        <div className="ant-col-5 mr-1">
-                          <div className="ant-card-loading-block" />
-                        </div>
-                      </div>
+                    <h3>{currentMoive.title}</h3>
+                    <h6 className="font-weight-light">{currentMoive.release_date}</h6>
+                    <div className="mb-3">
+                      <Rate
+                        disabled
+                        allowHalf={true}
+                        value={currentMoive.vote_average / 2}
+                      />
                     </div>
+                    <p>{currentMoive.overview}</p>
                   </div>
                 </div>
                 <div className="row align-self-end">
                   <div className="col-12">
-                    <h4>Trailer</h4>
+                    <h4>Trailers</h4>
                     <div className="row">
-                      <div className="col-md-4 col-sm-12 mb-1">
-                        <img
-                          src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/t7VSsAbIQS6kpO4ikuCNSiugsSy.jpg"
-                          alt=""
-                          className="img-fluid border p-1 bg-white"
-                        />
-                      </div>
-                      <div className="col-md-4 col-sm-12 mb-1">
-                        <img
-                          src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/t7VSsAbIQS6kpO4ikuCNSiugsSy.jpg"
-                          alt=""
-                          className="img-fluid border p-1 bg-white"
-                        />
-                      </div>
-                      <div className="col-md-4 col-sm-12 mb-1">
-                        <img
-                          src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/t7VSsAbIQS6kpO4ikuCNSiugsSy.jpg"
-                          alt=""
-                          className="img-fluid border p-1 bg-white"
-                        />
-                      </div>
+                      <MovieTrailers data={trailerData} />
                     </div>
                   </div>
                 </div>
@@ -160,7 +78,7 @@ class MovieJumbotron extends Component {
             </div>
           </div>
         </section>
-        <MovieContent />
+        <MovieContent currentMoive={currentMoive} />
       </React.Fragment>
     );
   }

@@ -48,9 +48,18 @@ export function fetch_pop_movies() {
 export function fetch_movie_detail(movieId) {
   return async (dispatch, getState) => {
     try {
-      const { data } = await Axios.get(`/${movieId}`);
+      const movieDetail = await Axios.get(`/${movieId}`);
+      const movieVideo = await Axios.get(`/${movieId}/videos`);
+      const movieCasts = await Axios.get(`/${movieId}/credits`);
+      const movieReviews = await Axios.get(`/${movieId}/reviews`);
+      const data = {
+        ...movieDetail.data,
+        videos: movieVideo.data.results,
+        casts: movieCasts.data.cast.slice(0, 9),
+        reviews: movieReviews.data.results
+      };
+
       console.log("Hello data", data); // log is here
-      // console.log("Hello results", random); // log is here
       dispatch(fetch_movie_detail_successful(data));
     } catch (error) {
       console.log("fetch_popmovies", error); // log is here
