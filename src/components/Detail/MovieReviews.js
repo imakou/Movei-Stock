@@ -5,7 +5,14 @@ const { Meta } = Card;
 
 const MovieReviews = props => {
   const { reviews } = props;
-  if (reviews.length === 0) return <h1>no</h1>;
+  if (reviews.length === 0)
+    return (
+      <div className="col-12 ">
+        <div className="alert alert-secondary text-center" role="alert">
+          This movie hasn't had review yet.
+        </div>
+      </div>
+    );
   const reviewContents = reviews.map(e => (
     <div key={e.id} className="col-12 mb-3">
       <Card>

@@ -1,10 +1,10 @@
 import axios from "axios";
-import { shuffle } from "lodash";
 export const Axios = axios.create({
   baseURL: "https://api.themoviedb.org/3/movie",
   params: {
     api_key: "62a63e99e24cf6c6b6793a961f73e879",
-    language: "en"
+    language: "en-US",
+    include_image_language: "en,null"
   }
 });
 
@@ -21,8 +21,22 @@ export const RandomBGC = () => {
     "linear-gradient(120deg, #20E2D7 0%, #F9FEA5 100%)",
     "linear-gradient(120deg, #7DE2FC 0%, #B9B6E5 100%)",
     "linear-gradient(120deg, #dad4ec 0%, #f3e7e9 100%)",
-    "linear-gradient(120deg, #0ba360 0%, #3cba92 100%)"
+    "linear-gradient(120deg, #0ba360 0%, #3cba92 100%)",
+    "linear-gradient(120deg, #c1dfc4 0%, #deecdd 100%)",
+    "linear-gradient(120deg, #00c6fb 0%, #005bea 100%)",
+    "linear-gradient(120deg, #a3bded 0%, #6991c7 100%)",
+    "linear-gradient(120deg, #ff0844 0%, #ffb199 100%)",
+    "linear-gradient(120deg, #434343 0%, #000000 100%)",
+    "linear-gradient(120deg, #ff758c 0%, #ff7eb3 100%)",
+    "linear-gradient(120deg, #c79081 0%, #dfa579 100%)",
+    "linear-gradient(120deg, #13547a 0%, #80d0c7 100%)"
   ];
 
-  return shuffle(colors).slice(0, 1);
+  return colors[Math.floor(Math.random() * colors.length)];
 };
+
+export function getTimeFromMins(mins) {
+  let h = (mins / 60) | 0,
+    m = mins % 60 | 0;
+  return `${h} h ${m} m`;
+}

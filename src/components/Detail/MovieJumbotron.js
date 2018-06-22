@@ -26,6 +26,18 @@ class MovieJumbotron extends Component {
     console.log("Hello currentMoive", this.props.currentMoive); // log is here
     const { currentMoive } = this.props;
     const trailerData = shuffle(currentMoive.videos).slice(0, 3);
+    const rate = () => {
+      let n = currentMoive.vote_average * 0.5;
+      let integer = Math.floor(n);
+      var decimal = n - Math.floor(n);
+      if (decimal >= 0.5) {
+        decimal = 0.5;
+      } else {
+        decimal = 0;
+      }
+      return integer + decimal;
+    };
+
     return (
       <React.Fragment>
         <section
@@ -57,16 +69,12 @@ class MovieJumbotron extends Component {
                     <h3>{currentMoive.title}</h3>
                     <h6 className="font-weight-light">{currentMoive.release_date}</h6>
                     <div className="mb-3">
-                      <Rate
-                        disabled
-                        allowHalf={true}
-                        value={currentMoive.vote_average / 2}
-                      />
+                      <Rate disabled allowHalf={true} value={rate()} />
                     </div>
                     <p>{currentMoive.overview}</p>
                   </div>
                 </div>
-                <div className="row align-self-end">
+                <div className="row align-self-start">
                   <div className="col-12">
                     <h4>Trailers</h4>
                     <div className="row">

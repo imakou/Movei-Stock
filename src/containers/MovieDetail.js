@@ -24,6 +24,10 @@ class MovieDetail extends Component {
     this.props.fetch_movie_detail(movieId);
   }
 
+  componentWillUnmount() {
+    this.props.empty_movie_detail();
+  }
+
   render() {
     const { currentMoive } = this.state;
     const content = currentMoive ? (
@@ -46,6 +50,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetch_movie_detail: movieId => {
       dispatch(actions.fetch_movie_detail(movieId));
+    },
+    empty_movie_detail: () => {
+      dispatch(actions.empty_movie_detail());
     }
   };
 };

@@ -16,12 +16,12 @@ function hoverable(WrappedComponent, propName = "hover") {
 
     turnHoverOn() {
       this.setState({ hovered: true });
-      console.log("Hello xxxxon", propName); // log is here
+      // console.log("Hello xxxxon", propName); // log is here
     }
 
     turnHoverOff() {
       this.setState({ hovered: false });
-      console.log("Hello turnHoverOff", this.props); // log is here
+      // console.log("Hello turnHoverOff", this.props); // log is here
     }
 
     render() {

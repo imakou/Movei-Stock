@@ -6,7 +6,10 @@ import { connect } from "react-redux";
 import HomeJumbotorn from "../components/Home/HomeJumbotorn";
 
 class Home extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.fetch_pop_movies();
+    this.props.fetch_now_playing_movies();
+  }
 
   render() {
     return (
@@ -18,7 +21,6 @@ class Home extends Component {
         <MovieCards
           popMovies={this.props.popMovies}
           nowPlayingMovies={this.props.nowPlayingMovies}
-          fetch_pop_movies={this.props.fetch_pop_movies}
         />
       </div>
     );

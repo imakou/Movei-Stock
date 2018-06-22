@@ -26,6 +26,12 @@ export const movies = (state = initialState, { type, payload }) => {
         currentMoive: payload
       };
 
+    case MOVIE_ACTIONS.EMPTY_MOVIE_DETAIL_SUCCESSFUL:
+      return {
+        ...state,
+        currentMoive: null
+      };
+
     default:
       return {
         ...state
