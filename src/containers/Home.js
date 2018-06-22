@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Nav from "../components/Nav/Nav";
-import MovieCards from "./MovieCards";
+import MovieCards from "../components/MovieCard/MovieCards";
 import * as actions from "../actions/MovieActions";
-import { Icon } from "antd";
 import { connect } from "react-redux";
+import HomeJumbotorn from "../components/Home/HomeJumbotorn";
 
 class Home extends Component {
   componentDidMount() {}
@@ -12,44 +11,15 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <section
-          style={{
-            backgroundImage:
-              'url("https://image.tmdb.org/t/p/w1400_and_h450_face/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg")'
-          }}
-          className="AppJumbotron d-flex align-items-end justify-content-center"
-        >
-          <div className="AppDescription">
-            <div className="container ">
-              <div className="row ">
-                <div className="col-7">
-                  <h1>56</h1>
-                  <p>
-                    This method is like _.difference except that it accepts iteratee which
-                    is invoked for each element of array and values to generate the
-                    criterion by which they're compared. The order and references of
-                    result values are determined by the first array. The iteratee is
-                    invoked with one argument: (value).
-                  </p>
-                </div>
-                <div className="col-5 pb-5 d-flex align-items-end justify-content-center">
-                  <button type="button" className="btn btn-success">
-                    <Icon className="mr-1" type="caret-right" />railer
-                  </button>
-                  <button type="button" className="ml-3 btn btn-outline-light">
-                    <Icon className="mr-1" type="search" />Detail
-                  </button>
-                  <button type="button" className="ml-3 btn btn-outline-danger">
-                    <Icon className="mr-1" type="plus" /> Favorite
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="bg-light">
-          <MovieCards />
-        </section>
+        <HomeJumbotorn
+          fetch_now_playing_movies={this.props.fetch_now_playing_movies}
+          nowPlayingMovies={this.props.nowPlayingMovies}
+        />
+        <MovieCards
+          popMovies={this.props.popMovies}
+          nowPlayingMovies={this.props.nowPlayingMovies}
+          fetch_pop_movies={this.props.fetch_pop_movies}
+        />
       </div>
     );
   }
@@ -58,11 +28,21 @@ class Home extends Component {
 Home.propTypes = {};
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    popMovies: state.movies.popMovies,
+    nowPlayingMovies: state.movies.nowPlayingMovies
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetch_pop_movies: () => {
+      dispatch(actions.fetch_pop_movies());
+    },
+    fetch_now_playing_movies: () => {
+      dispatch(actions.fetch_now_playing_movies());
+    }
+  };
 };
 
 export default connect(

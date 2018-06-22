@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Tabs, Badge, Card, Icon, Avatar, Spin } from "antd";
-import { connect } from "react-redux";
-import * as actions from "../actions/MovieActions";
-import MovieCard from "../components/MovieCard/MovieCard";
+import MovieCard from "./MovieCard";
 
 const { Meta } = Card;
 const TabPane = Tabs.TabPane;
@@ -28,7 +26,7 @@ class MovieCards extends Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <section className="bg-light">
         <div className="container pt-5 pb-5">
           <div className="row">
             <div className="col-10">
@@ -306,7 +304,7 @@ class MovieCards extends Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </section>
     );
   }
 }
@@ -316,21 +314,4 @@ MovieCards.propTypes = {
   popMovies: PropTypes.array
 };
 
-const mapStateToProps = state => {
-  return {
-    popMovies: state.movies.popMovies
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetch_pop_movies: () => {
-      dispatch(actions.fetch_pop_movies());
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MovieCards);
+export default MovieCards;

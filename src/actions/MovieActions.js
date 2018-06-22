@@ -4,7 +4,8 @@ import { shuffle, slice } from "lodash";
 export const MOVIE_ACTIONS = {
   FETCH_BY_KEYWORDS_SUCCESSFUL: "FETCH_BY_KEYWORDS_SUCCESSFUL",
   FETCH_POP_MOVIES_SUCCESSFUL: "FETCH_POP_MOVIES_SUCCESSFUL",
-  FETCH_MOVIE_DETAIL_SUCCESSFUL: "FETCH_MOVIE_DETAIL_SUCCESSFUL"
+  FETCH_MOVIE_DETAIL_SUCCESSFUL: "FETCH_MOVIE_DETAIL_SUCCESSFUL",
+  FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL: "FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL"
 };
 
 // ————— call by actions —————
@@ -30,6 +31,13 @@ function fetch_movie_detail_successful(payload) {
   };
 }
 
+function fetch_now_playing_movies_successful(payload) {
+  return {
+    type: MOVIE_ACTIONS.FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL,
+    payload
+  };
+}
+
 // ————— call by components —————
 
 export function fetch_pop_movies() {
@@ -37,8 +45,19 @@ export function fetch_pop_movies() {
     try {
       const result = await Axios.get("/popular");
       const movies = slice(shuffle(result.data.results), 0, 8);
-      // console.log("Hello results", random); // log is here
       dispatch(fetch_pop_movies_successful(movies));
+    } catch (error) {
+      console.log("fetch_popmovies", error); // log is here
+    }
+  };
+}
+
+export function fetch_now_playing_movies() {
+  return async (dispatch, getState) => {
+    try {
+      const result = await Axios.get("/now_playing");
+      const movies = slice(shuffle(result.data.results), 0, 8);
+      dispatch(fetch_now_playing_movies_successful(movies));
     } catch (error) {
       console.log("fetch_popmovies", error); // log is here
     }

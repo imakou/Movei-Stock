@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Form, Icon, Input, Button, Checkbox, Modal, Tabs, Divider } from "antd";
+import { Form, Icon, Input, Button, Checkbox, Divider } from "antd";
 const FormItem = Form.Item;
-const TabPane = Tabs.TabPane;
 
 class LoginForm extends Component {
   handleSubmit = e => {
