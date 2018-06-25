@@ -76,10 +76,14 @@ class MovieJumbotron extends Component {
                 </div>
                 <div className="row align-self-start">
                   <div className="col-12">
-                    <h4>Trailers</h4>
-                    <div className="row">
-                      <MovieTrailers data={trailerData} />
-                    </div>
+                    {trailerData.length === 0 ? null : (
+                      <React.Fragment>
+                        <h4>Trailers</h4>
+                        <div className="row">
+                          <MovieTrailers trailerData={trailerData} />
+                        </div>
+                      </React.Fragment>
+                    )}
                   </div>
                 </div>
               </div>
@@ -92,6 +96,8 @@ class MovieJumbotron extends Component {
   }
 }
 
-MovieJumbotron.propTypes = {};
+MovieJumbotron.propTypes = {
+  currentMoive: PropTypes.object.isRequired
+};
 
 export default MovieJumbotron;

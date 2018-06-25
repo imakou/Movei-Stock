@@ -78,7 +78,7 @@ class MovieImages extends React.Component {
           width="45vw"
         >
           <img
-            className="img-fluid"
+            className="img-fluid w-100"
             src={`https://image.tmdb.org/t/p/original${this.state.imgUrl}`}
           />
         </Modal>

@@ -26,7 +26,9 @@ class MovieCard extends Component {
               </h6>
             </div>
             <div className="col-2 p-0">
-              <span className="badge badge-pill badge-success">{data.vote_average}</span>
+              <span className="badge badge-pill badge-success font-weight-light">
+                {data.vote_average}
+              </span>
             </div>
           </div>
         </div>

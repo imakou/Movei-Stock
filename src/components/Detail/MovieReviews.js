@@ -29,15 +29,10 @@ const MovieReviews = props => {
             <React.Fragment>
               <div className="d-flex flex-row">
                 <h6>{e.author}</h6>
-                {/* <Badge
-                    count={109}
-                    style={{ backgroundColor: "#52c41a" }}
-                    className="ml-2"
-                  /> */}
               </div>
-              <small className="text-secondary">
+              {/* <small className="text-secondary">
                 Written by Screen-Space on April 25, 2018
-              </small>
+              </small> */}
             </React.Fragment>
           }
           description={

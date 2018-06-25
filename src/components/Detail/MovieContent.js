@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MovieBasicInfo from "./MovieBasicInfo";
 import MovieSummary from "./MovieSummary";
 import MovieImages from "./MovieImages";
+import MovieTrailers from "./MovieTrailers";
 import { Tabs } from "antd";
 const TabPane = Tabs.TabPane;
 
@@ -20,7 +21,9 @@ class MovieContent extends Component {
                 <MovieImages images={this.props.currentMoive.images} />
               </TabPane>
               <TabPane tab="VIDEOS" key="3">
-                <h4>ffggewerwer</h4>
+                <div className="row">
+                  <MovieTrailers trailerData={this.props.currentMoive.videos} />
+                </div>
               </TabPane>
             </Tabs>
           </div>
