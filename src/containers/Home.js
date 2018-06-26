@@ -17,6 +17,7 @@ class Home extends Component {
         <HomeJumbotorn
           fetch_now_playing_movies={this.props.fetch_now_playing_movies}
           nowPlayingMovies={this.props.nowPlayingMovies}
+          search_movies={this.props.search_movies}
         />
         <MovieCards
           popMovies={this.props.popMovies}
@@ -43,6 +44,9 @@ const mapDispatchToProps = dispatch => {
     },
     fetch_now_playing_movies: () => {
       dispatch(actions.fetch_now_playing_movies());
+    },
+    search_movies: keyWord => {
+      dispatch(actions.search_movies(keyWord));
     }
   };
 };

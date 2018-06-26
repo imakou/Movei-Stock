@@ -3,6 +3,7 @@ import { MOVIE_ACTIONS } from "../actions/MovieActions";
 const initialState = {
   popMovies: [],
   nowPlayingMovies: [],
+  searchedMovies: [],
   currentMoive: null
 };
 
@@ -30,6 +31,11 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         currentMoive: null
+      };
+    case MOVIE_ACTIONS.SEARCH_MOVIES_SUCCESSFUL:
+      return {
+        ...state,
+        searchedMovies: payload
       };
 
     default:

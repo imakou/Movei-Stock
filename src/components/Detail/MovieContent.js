@@ -9,6 +9,11 @@ const TabPane = Tabs.TabPane;
 
 class MovieContent extends Component {
   render() {
+    const { backdrops, posters } = this.props.currentMoive.images;
+    const { videos } = this.props.currentMoive;
+
+    const imagesLength = backdrops.length + posters.length;
+    const videosLength = videos.length;
     return (
       <div className="container mt-5">
         <div className="row">
@@ -17,10 +22,10 @@ class MovieContent extends Component {
               <TabPane tab="SUMMARY" key="1">
                 <MovieSummary currentMoive={this.props.currentMoive} />
               </TabPane>
-              <TabPane tab="IMAGES" key="2">
+              <TabPane tab={`IMAGES (${imagesLength})`} key="2">
                 <MovieImages images={this.props.currentMoive.images} />
               </TabPane>
-              <TabPane tab="VIDEOS" key="3">
+              <TabPane tab={`VIDEOS (${videosLength})`} key="3">
                 <div className="row">
                   <MovieTrailers trailerData={this.props.currentMoive.videos} />
                 </div>

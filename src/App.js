@@ -8,7 +8,7 @@ import "./css/social.css";
 import Home from "./containers/Home";
 import MovieDetail from "./containers/MovieDetail";
 import Member from "./containers/Member";
-import Nav from "./components/Nav/Nav";
+import Nav from "./containers/Nav";
 
 class App extends Component {
   render() {

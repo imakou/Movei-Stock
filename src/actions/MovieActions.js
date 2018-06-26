@@ -6,6 +6,7 @@ export const MOVIE_ACTIONS = {
   FETCH_POP_MOVIES_SUCCESSFUL: "FETCH_POP_MOVIES_SUCCESSFUL",
   FETCH_MOVIE_DETAIL_SUCCESSFUL: "FETCH_MOVIE_DETAIL_SUCCESSFUL",
   FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL: "FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL",
+  SEARCH_MOVIES_SUCCESSFUL: "SEARCH_MOVIES_SUCCESSFUL",
   EMPTY_MOVIE_DETAIL_SUCCESSFUL: "EMPTY_MOVIE_DETAIL_SUCCESSFUL"
 };
 
@@ -39,6 +40,13 @@ function fetch_now_playing_movies_successful(payload) {
   };
 }
 
+function search_movies_successful(payload) {
+  return {
+    type: MOVIE_ACTIONS.SEARCH_MOVIES_SUCCESSFUL,
+    payload
+  };
+}
+
 function empty_movie_detail_successful() {
   return {
     type: MOVIE_ACTIONS.EMPTY_MOVIE_DETAIL_SUCCESSFUL
@@ -50,7 +58,7 @@ function empty_movie_detail_successful() {
 export function fetch_pop_movies() {
   return async (dispatch, getState) => {
     try {
-      const result = await Axios.get("/popular");
+      const result = await Axios.get("/movie/popular");
       const movies = slice(shuffle(result.data.results), 0, 8);
       dispatch(fetch_pop_movies_successful(movies));
     } catch (error) {
@@ -62,7 +70,7 @@ export function fetch_pop_movies() {
 export function fetch_now_playing_movies() {
   return async (dispatch, getState) => {
     try {
-      const result = await Axios.get("/now_playing");
+      const result = await Axios.get("/movie/now_playing");
       const movies = slice(shuffle(result.data.results), 0, 8);
       dispatch(fetch_now_playing_movies_successful(movies));
     } catch (error) {
@@ -74,11 +82,11 @@ export function fetch_now_playing_movies() {
 export function fetch_movie_detail(movieId) {
   return async (dispatch, getState) => {
     try {
-      const movieDetail = await Axios.get(`/${movieId}`);
-      const movieVideo = await Axios.get(`/${movieId}/videos`);
-      const movieCasts = await Axios.get(`/${movieId}/credits`);
-      const movieReviews = await Axios.get(`/${movieId}/reviews`);
-      const movieImages = await Axios.get(`/${movieId}/images`);
+      const movieDetail = await Axios.get(`/movie/${movieId}`);
+      const movieVideo = await Axios.get(`/movie/${movieId}/videos`);
+      const movieCasts = await Axios.get(`/movie/${movieId}/credits`);
+      const movieReviews = await Axios.get(`/movie/${movieId}/reviews`);
+      const movieImages = await Axios.get(`/movie/${movieId}/images`);
       const data = {
         ...movieDetail.data,
         videos: movieVideo.data.results,
@@ -101,6 +109,17 @@ export function empty_movie_detail() {
       dispatch(empty_movie_detail_successful());
     } catch (error) {
       console.log("empty_movie_detail", error); // log is here
+    }
+  };
+}
+
+export function search_movies(keyWord) {
+  return async dispatch => {
+    try {
+      const { data } = await Axios.get(`/search/movie?query=${keyWord}`);
+      dispatch(search_movies_successful(data.results));
+    } catch (error) {
+      console.log("search_movie", error); // log is here
     }
   };
 }

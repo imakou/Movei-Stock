@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Avatar, Menu, Icon, Dropdown, Button } from "antd";
-import logo from "../../logo.svg";
-import LoginModal from "./LoginModal";
-import SearchBar from "./SearchBar";
+import logo from "../logo.svg";
+import LoginModal from "../components/Nav/LoginModal";
+import SearchBar from "../components/Nav/SearchBar";
+import { connect } from "react-redux";
+import * as actions from "../actions/MovieActions";
 
 function hoverable(WrappedComponent, propName = "hover") {
   return class HoverableComponent extends Component {
@@ -77,7 +79,10 @@ class Nav extends Component {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <SearchBar />
+              <SearchBar
+                search_movies={this.props.search_movies}
+                searchedMovies={this.props.searchedMovies}
+              />
             </div>
             <div className="ml-4">
               <Dropdown overlay={content} placement="bottomCenter">
@@ -96,4 +101,24 @@ class Nav extends Component {
 
 Nav.propTypes = {};
 
-export default hoverable(Nav, "5566");
+const mapStateToProps = state => {
+  return {
+    searchedMovies: state.movies.searchedMovies
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    search_movies: keyWord => {
+      dispatch(actions.search_movies(keyWord));
+    }
+  };
+};
+
+export default hoverable(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Nav),
+  "5566"
+);
