@@ -9,6 +9,7 @@ import Home from "./containers/Home";
 import MovieDetail from "./containers/MovieDetail";
 import Member from "./containers/Member";
 import Nav from "./containers/Nav";
+import Search from "./containers/Search";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/movie/:id" component={MovieDetail} />
             <Route exact path="/member" component={Member} />
+            <Route exact path="/search" component={Search} />
           </Switch>
           <footer className="bg-info">
             <div className="container">

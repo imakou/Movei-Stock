@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Avatar, Menu, Icon, Dropdown, Button } from "antd";
+import { Avatar, Menu, Icon, Dropdown } from "antd";
 import logo from "../logo.svg";
 import LoginModal from "../components/Nav/LoginModal";
 import SearchBar from "../components/Nav/SearchBar";
@@ -99,7 +99,10 @@ class Nav extends Component {
   }
 }
 
-Nav.propTypes = {};
+Nav.propTypes = {
+  searchedMovies: PropTypes.array,
+  search_movies: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => {
   return {
