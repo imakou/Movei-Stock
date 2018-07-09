@@ -224,6 +224,64 @@ body {
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.815); }
 
+.SearchScreen {
+  height: 100vh; }
+
+.SearchResults {
+  min-height: 90vh !important; }
+
+.SearchBarMovieCard {
+  height: 100px;
+  background-position: center top; }
+
+.SearchBarButton {
+  position: relative;
+  z-index: 105; }
+
+.SearchJumbotron {
+  background-size: cover !important;
+  height: 100% !important;
+  weight: 100% !important; }
+
+.fullMask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #3f3f3f;
+  z-index: 102;
+  opacity: 0.9;
+  transition: all 1.5s; }
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100; }
+
+.fullscreen-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100; }
+
+.video_mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(126, 126, 126, 0.568);
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1; }
+
 .ant-card-actions {
   background-color: #fff !important; }
 
@@ -244,10 +302,11 @@ body {
   padding-bottom: 0px !important; }
 
 .react-autosuggest__container {
-  position: relative; }
+  position: relative;
+  z-index: 111; }
 
 .react-autosuggest__input {
-  width: 240px;
+  width: 280px;
   height: 30px;
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
@@ -269,7 +328,7 @@ body {
 .react-autosuggest__container--open .react-autosuggest__suggestions-container {
   display: block;
   position: absolute;
-  top: 31px;
+  top: 29px;
   width: 280px;
   border: 1px solid #aaa;
   background-color: #fff;
@@ -278,7 +337,7 @@ body {
   font-size: 16px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  z-index: 2; }
+  z-index: 202; }
 
 .react-autosuggest__suggestions-list {
   margin: 0;
@@ -286,8 +345,7 @@ body {
   list-style-type: none; }
 
 .react-autosuggest__suggestion {
-  cursor: pointer;
-  padding: 10px 20px; }
+  cursor: pointer; }
 
 .react-autosuggest__suggestion:not(:first-child) {
   border-top: 1px solid #ddd; }

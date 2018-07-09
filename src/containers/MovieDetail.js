@@ -8,14 +8,22 @@ import MovieJumbotron from "../components/Detail/MovieJumbotron";
 
 class MovieDetail extends Component {
   state = {
+    movieId: this.props.match.params.id,
     currentMoive: this.props.currentMoive
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { currentMoive } = props;
+    console.log("Hello props", props); // log is here
+    const { currentMoive, match } = props;
+    const movieId = match.params.id;
+    if (state.movieId !== movieId) {
+      props.fetch_movie_detail(movieId);
+      return { movieId };
+    }
     if (currentMoive) {
       return { currentMoive };
     }
+
     return null;
   }
 
@@ -40,6 +48,7 @@ class MovieDetail extends Component {
 }
 
 MovieDetail.propTypes = {};
+
 const mapStateToProps = state => {
   return {
     currentMoive: state.movies.currentMoive

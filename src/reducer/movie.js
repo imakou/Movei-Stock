@@ -38,6 +38,12 @@ export const movies = (state = initialState, { type, payload }) => {
         searchedMovies: payload
       };
 
+    case MOVIE_ACTIONS.EMPTY_SEARCH_MOVIES_SUCCESSFUL:
+      return {
+        ...state,
+        searchedMovies: []
+      };
+
     default:
       return {
         ...state

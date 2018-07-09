@@ -7,6 +7,7 @@ export const MOVIE_ACTIONS = {
   FETCH_MOVIE_DETAIL_SUCCESSFUL: "FETCH_MOVIE_DETAIL_SUCCESSFUL",
   FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL: "FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL",
   SEARCH_MOVIES_SUCCESSFUL: "SEARCH_MOVIES_SUCCESSFUL",
+  EMPTY_SEARCH_MOVIES_SUCCESSFUL: "EMPTY_SEARCH_MOVIES_SUCCESSFUL",
   EMPTY_MOVIE_DETAIL_SUCCESSFUL: "EMPTY_MOVIE_DETAIL_SUCCESSFUL"
 };
 
@@ -53,10 +54,16 @@ function empty_movie_detail_successful() {
   };
 }
 
+function empty_search_movies_successful() {
+  return {
+    type: MOVIE_ACTIONS.EMPTY_SEARCH_MOVIES_SUCCESSFUL
+  };
+}
+
 // ————— call by components —————
 
 export function fetch_pop_movies() {
-  return async (dispatch, getState) => {
+  return async dispatch => {
     try {
       const result = await Axios.get("/movie/popular");
       const movies = slice(shuffle(result.data.results), 0, 8);
@@ -68,7 +75,7 @@ export function fetch_pop_movies() {
 }
 
 export function fetch_now_playing_movies() {
-  return async (dispatch, getState) => {
+  return async dispatch => {
     try {
       const result = await Axios.get("/movie/now_playing");
       const movies = slice(shuffle(result.data.results), 0, 8);
@@ -80,7 +87,7 @@ export function fetch_now_playing_movies() {
 }
 
 export function fetch_movie_detail(movieId) {
-  return async (dispatch, getState) => {
+  return async dispatch => {
     try {
       const movieDetail = await Axios.get(`/movie/${movieId}`);
       const movieVideo = await Axios.get(`/movie/${movieId}/videos`);
@@ -107,6 +114,17 @@ export function empty_movie_detail() {
   return async dispatch => {
     try {
       dispatch(empty_movie_detail_successful());
+    } catch (error) {
+      console.log("empty_movie_detail", error); // log is here
+    }
+  };
+}
+
+export function empty_search_movies() {
+  return async dispatch => {
+    try {
+      console.log("Hello empty_search_movies"); // log is here
+      dispatch(empty_search_movies_successful());
     } catch (error) {
       console.log("empty_movie_detail", error); // log is here
     }

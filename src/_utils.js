@@ -40,3 +40,15 @@ export function getTimeFromMins(mins) {
     m = mins % 60 | 0;
   return `${h} h ${m} m`;
 }
+
+export function getRate(value) {
+  let n = value * 0.5;
+  let integer = Math.floor(n);
+  var decimal = n - Math.floor(n);
+  if (decimal >= 0.5) {
+    decimal = 0.5;
+  } else {
+    decimal = 0;
+  }
+  return integer + decimal;
+}

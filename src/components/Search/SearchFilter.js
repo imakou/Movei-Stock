@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { Form, Input } from "antd";
+import { Input } from "antd";
 import PropTypes from "prop-types";
-const FormItem = Form.Item;
+const Search = Input.Search;
 
 class SearchFilter extends Component {
+  handleSearch = keyWord => {
+    this.props.search_movies(keyWord);
+  };
   render() {
     const formItemLayout = {
       labelCol: {
@@ -16,21 +19,19 @@ class SearchFilter extends Component {
       }
     };
     return (
-      <div className="row">
-        <Form className="row">
-          <FormItem {...formItemLayout} className="mb-1 col-3" label="Keyword">
-            <Input placeholder="large size" />
-          </FormItem>
-          <FormItem {...formItemLayout} className="mb-1 col-3" label="Year">
-            <Input placeholder="large size" />
-          </FormItem>
-          <FormItem {...formItemLayout} className="mb-1 col-3" label="Genres">
-            <Input placeholder="large size" />
-          </FormItem>
-          <FormItem {...formItemLayout} className="mb-1 col-3" label="Rate">
-            <Input placeholder="large size" />
-          </FormItem>
-        </Form>
+      <div className="container">
+        <div className="row">
+          <div className="col-12 d-flex justify-content-center">
+            <div className="mt-5 w-50">
+              <Search
+                placeholder="input search text"
+                size="large"
+                defaultValue={this.props.keyWord}
+                onSearch={keyWord => this.handleSearch(keyWord)}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

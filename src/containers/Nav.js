@@ -7,23 +7,21 @@ import LoginModal from "../components/Nav/LoginModal";
 import SearchBar from "../components/Nav/SearchBar";
 import { connect } from "react-redux";
 import * as actions from "../actions/MovieActions";
+import { withRouter } from "react-router-dom";
 
 function hoverable(WrappedComponent, propName = "hover") {
   return class HoverableComponent extends Component {
     constructor(props) {
       super(props);
-
       this.state = { hovered: false };
     }
 
     turnHoverOn() {
       this.setState({ hovered: true });
-      // console.log("Hello xxxxon", propName); // log is here
     }
 
     turnHoverOff() {
       this.setState({ hovered: false });
-      // console.log("Hello turnHoverOff", this.props); // log is here
     }
 
     render() {
@@ -42,6 +40,7 @@ function hoverable(WrappedComponent, propName = "hover") {
 
 class Nav extends Component {
   render() {
+    console.log("Hello this.props", this.props); // log is here
     const content = (
       <Menu style={{ width: "150px" }}>
         <Menu.Item key="1">
@@ -82,6 +81,8 @@ class Nav extends Component {
               <SearchBar
                 search_movies={this.props.search_movies}
                 searchedMovies={this.props.searchedMovies}
+                empty_search_movies={this.props.empty_search_movies}
+                history={this.props.history}
               />
             </div>
             <div className="ml-4">
@@ -114,14 +115,16 @@ const mapDispatchToProps = dispatch => {
   return {
     search_movies: keyWord => {
       dispatch(actions.search_movies(keyWord));
+    },
+    empty_search_movies: () => {
+      dispatch(actions.empty_search_movies());
     }
   };
 };
 
-export default hoverable(
+export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Nav),
-  "5566"
+  )(Nav)
 );

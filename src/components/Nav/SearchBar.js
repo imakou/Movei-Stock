@@ -1,36 +1,20 @@
 import React, { Component, PureComponent } from "react";
 import Autosuggest from "react-autosuggest";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-
-const languages = [
-  {
-    name: "Escape Plan 2: Hades",
-    year: 1972
-  },
-  {
-    name: "Elm",
-    year: 2012
-  }
-];
-
+import { Icon, Button } from "antd";
 let timeout = null;
-
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-
-// Use your imagination to render suggestions.
 
 class SearchBar extends PureComponent {
   state = {
-    value: "",
-    suggestions: []
+    keyWord: "",
+    suggestions: [],
+    showMask: false
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.searchedMovies.length !== prevState.suggestions) {
-      return { suggestions: nextProps.searchedMovies };
+      return { suggestions: nextProps.searchedMovies.slice(0, 5) };
     } else {
       return null;
     }
@@ -38,28 +22,36 @@ class SearchBar extends PureComponent {
 
   onChange = (event, { newValue }) => {
     this.setState({
-      value: newValue
+      keyWord: newValue,
+      showMask: true
     });
-
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      this.props.search_movies(newValue);
-      // console.log("Hello newValue", newValue); // log is here
+      if (newValue === "") {
+        this.props.empty_search_movies();
+      } else {
+        this.props.search_movies(newValue);
+      }
     }, 500);
   };
+
+  onKeyDown = event => {
+    const { keyWord } = this.state;
+    if (event.key === "Enter") {
+      this.setState({ showMask: false });
+      // console.log("Hello this.props", this.props); // log is here
+      this.props.history.push(`/search/${keyWord}`);
+      this.onSuggestionsClearRequested();
+    }
+  };
+
   renderSuggestion = suggestion => {
+    const BGImage = {
+      backgroundImage: `url("https://image.tmdb.org/t/p/w300${suggestion.backdrop_path}")`
+    };
     return (
       <Link to={`/movie/${suggestion.id}`}>
-        <div className="row">
-          <div className="col-4">
-            <img
-              src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${
-                suggestion.poster_path
-              }`}
-              alt={suggestion.title}
-              className="img-fluid"
-            />
-          </div>
+        <div className="row no-gutters SearchBarMovieCard" style={BGImage}>
           <div className="col-8">
             <span>{suggestion.title}</span>
           </div>
@@ -67,52 +59,58 @@ class SearchBar extends PureComponent {
       </Link>
     );
   };
-  // Autosuggest will call this function every time you need to update suggestions.
-  // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = data => {
-    console.log("Hello data", data); // log is here
-    // this.setState({
-    //   suggestions: this.getSuggestions(value)
-    // });
-  };
 
-  // Autosuggest will call this function every time you need to clear suggestions.
-  onSuggestionsClearRequested = v => {
-    console.log("Hello v", v); // log is here
+  onSuggestionsFetchRequested = () => {};
+
+  onSuggestionsClearRequested = () => {
     this.setState({
       value: "",
-      suggestions: []
+      suggestions: [],
+      showMask: false
     });
   };
   getSuggestionValue = suggestion => {
-    console.log("Hello suggestion", suggestion); // log is here
+    console.log("Hello getSuggestionValue"); // log is here
     this.setState({ value: suggestion.title, suggestions: [] });
     return suggestion.title;
   };
   render() {
-    const { value, suggestions } = this.state;
-    console.log("Hello suggestions", suggestions); // log is here
-    // Autosuggest will pass through all these props to the input.
+    const { keyWord, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Type a programming language",
-      value,
-      onChange: this.onChange
+      placeholder: "Movie's name or keyword...",
+      value: keyWord,
+      onChange: this.onChange,
+      onKeyDown: this.onKeyDown
     };
+    const mask = this.state.showMask
+      ? { visibility: "visible", opacity: 0.88 }
+      : { visibility: "hidden", opacity: 0 };
 
-    // Finally, render it!
     return (
-      <Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps}
-      />
+      <React.Fragment>
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={this.getSuggestionValue}
+          renderSuggestion={this.renderSuggestion}
+          inputProps={inputProps}
+        />
+        <div className="SearchBarButton">
+          <Link to={`/search/${keyWord}`}>
+            <Button className="ml-1" onClick={() => this.setState({ keyWord: "" })}>
+              <Icon type="search" />More
+            </Button>
+          </Link>
+        </div>
+        <div style={{ ...mask }} className="fullMask" />
+      </React.Fragment>
     );
   }
 }
 
-SearchBar.propTypes = {};
+SearchBar.propTypes = {
+  search_movies: PropTypes.func
+};
 
 export default SearchBar;
