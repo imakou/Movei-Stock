@@ -31,8 +31,6 @@ class Search extends Component {
     this.props.empty_search_movies();
   }
   render() {
-    console.log("Hello this.props", this.props); // log is here
-    const { match } = this.props;
     return (
       <div className="position-relative">
         <div className="fullscreen-bg">
@@ -42,9 +40,14 @@ class Search extends Component {
         <div className="container">
           <SearchFilter
             search_movies={this.props.search_movies}
-            keyWord={match.params.keyWord}
+            update_keyword={this.props.update_keyword}
+            keyWord={this.props.keyWord}
           />
-          <SearchResults searchedMovies={this.props.searchedMovies} />
+          <SearchResults
+            keyWord={this.props.keyWord}
+            fetch_more_movies={this.props.fetch_more_movies}
+            searchedMovies={this.props.searchedMovies}
+          />
         </div>
       </div>
     );
@@ -58,7 +61,8 @@ Search.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    searchedMovies: state.movies.searchedMovies
+    searchedMovies: state.movies.searchedMovies,
+    keyWord: state.movies.keyWord
   };
 };
 
@@ -66,6 +70,12 @@ const mapDispatchToProps = dispatch => {
   return {
     search_movies: keyWord => {
       dispatch(actions.search_movies(keyWord));
+    },
+    update_keyword: keyWord => {
+      dispatch(actions.update_keyword(keyWord));
+    },
+    fetch_more_movies: (keyWord, page) => {
+      dispatch(actions.fetch_more_movies(keyWord, page));
     },
     empty_search_movies: () => {
       dispatch(actions.empty_search_movies());

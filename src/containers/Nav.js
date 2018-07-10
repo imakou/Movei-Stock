@@ -40,7 +40,6 @@ function hoverable(WrappedComponent, propName = "hover") {
 
 class Nav extends Component {
   render() {
-    console.log("Hello this.props", this.props); // log is here
     const content = (
       <Menu style={{ width: "150px" }}>
         <Menu.Item key="1">
@@ -80,9 +79,10 @@ class Nav extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <SearchBar
                 search_movies={this.props.search_movies}
-                searchedMovies={this.props.searchedMovies}
                 empty_search_movies={this.props.empty_search_movies}
+                update_keyword={this.props.update_keyword}
                 history={this.props.history}
+                searchedMovies={this.props.searchedMovies}
               />
             </div>
             <div className="ml-4">
@@ -118,6 +118,9 @@ const mapDispatchToProps = dispatch => {
     },
     empty_search_movies: () => {
       dispatch(actions.empty_search_movies());
+    },
+    update_keyword: keyWord => {
+      dispatch(actions.update_keyword(keyWord));
     }
   };
 };

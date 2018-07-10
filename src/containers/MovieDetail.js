@@ -13,7 +13,6 @@ class MovieDetail extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    console.log("Hello props", props); // log is here
     const { currentMoive, match } = props;
     const movieId = match.params.id;
     if (state.movieId !== movieId) {
@@ -34,6 +33,7 @@ class MovieDetail extends Component {
 
   componentWillUnmount() {
     this.props.empty_movie_detail();
+    this.props.empty_search_movies();
   }
 
   render() {
@@ -62,6 +62,9 @@ const mapDispatchToProps = dispatch => {
     },
     empty_movie_detail: () => {
       dispatch(actions.empty_movie_detail());
+    },
+    empty_search_movies: () => {
+      dispatch(actions.empty_search_movies());
     }
   };
 };

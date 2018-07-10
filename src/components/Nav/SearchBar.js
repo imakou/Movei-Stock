@@ -1,19 +1,22 @@
 import React, { Component, PureComponent } from "react";
 import Autosuggest from "react-autosuggest";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Icon, Button } from "antd";
+import { Icon, Button, Rate } from "antd";
+import { getRate } from "../../_utils";
+import moment from "moment";
 let timeout = null;
 
 class SearchBar extends PureComponent {
   state = {
     keyWord: "",
+    tempKeyWord: "",
     suggestions: [],
     showMask: false
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.searchedMovies.length !== prevState.suggestions) {
+    if (nextProps.searchedMovies.length !== prevState.suggestions.length) {
       return { suggestions: nextProps.searchedMovies.slice(0, 5) };
     } else {
       return null;
@@ -23,14 +26,17 @@ class SearchBar extends PureComponent {
   onChange = (event, { newValue }) => {
     this.setState({
       keyWord: newValue,
+      tempKeyWord: newValue,
       showMask: true
     });
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       if (newValue === "") {
         this.props.empty_search_movies();
+        this.props.update_keyword("");
       } else {
         this.props.search_movies(newValue);
+        this.props.update_keyword(newValue);
       }
     }, 500);
   };
@@ -39,10 +45,14 @@ class SearchBar extends PureComponent {
     const { keyWord } = this.state;
     if (event.key === "Enter") {
       this.setState({ showMask: false });
-      // console.log("Hello this.props", this.props); // log is here
       this.props.history.push(`/search/${keyWord}`);
       this.onSuggestionsClearRequested();
     }
+  };
+
+  handleMore = () => {
+    const { tempKeyWord } = this.state;
+    this.props.history.push(`/search/${tempKeyWord}`);
   };
 
   renderSuggestion = suggestion => {
@@ -51,9 +61,24 @@ class SearchBar extends PureComponent {
     };
     return (
       <Link to={`/movie/${suggestion.id}`}>
-        <div className="row no-gutters SearchBarMovieCard" style={BGImage}>
-          <div className="col-8">
+        <div
+          onClick={() => this.onSuggestionsClearRequested()}
+          className="row no-gutters SearchBarMovieCard d-flex align-items-end"
+          style={BGImage}
+        >
+          <div className="col-12 SearchBarMovieCardCaption">
             <span>{suggestion.title}</span>
+            <div className="SearchBarMovieCardCaptionTitle d-flex justify-content-between">
+              <span className="SearchBarMovieCardCaptionReleaseDate ml-1">
+                {moment(suggestion.release_date).format("YYYY")}
+              </span>
+              <Rate
+                className="mr-1"
+                disabled
+                allowHalf
+                value={getRate(suggestion.vote_average)}
+              />
+            </div>
           </div>
         </div>
       </Link>
@@ -64,16 +89,17 @@ class SearchBar extends PureComponent {
 
   onSuggestionsClearRequested = () => {
     this.setState({
-      value: "",
+      keyWord: "",
       suggestions: [],
       showMask: false
     });
   };
+
   getSuggestionValue = suggestion => {
-    console.log("Hello getSuggestionValue"); // log is here
-    this.setState({ value: suggestion.title, suggestions: [] });
+    this.setState({ keyWord: suggestion.title, suggestions: [] });
     return suggestion.title;
   };
+
   render() {
     const { keyWord, suggestions } = this.state;
     const inputProps = {
@@ -97,13 +123,15 @@ class SearchBar extends PureComponent {
           inputProps={inputProps}
         />
         <div className="SearchBarButton">
-          <Link to={`/search/${keyWord}`}>
-            <Button className="ml-1" onClick={() => this.setState({ keyWord: "" })}>
-              <Icon type="search" />More
-            </Button>
-          </Link>
+          <Button className="ml-1" onClick={this.handleMore}>
+            <Icon type="search" />More
+          </Button>
         </div>
-        <div style={{ ...mask }} className="fullMask" />
+        <div
+          style={{ ...mask }}
+          onClick={() => this.onSuggestionsClearRequested()}
+          className="fullMask"
+        />
       </React.Fragment>
     );
   }

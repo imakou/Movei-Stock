@@ -4,29 +4,45 @@ import PropTypes from "prop-types";
 const Search = Input.Search;
 
 class SearchFilter extends Component {
+  state = {
+    keyWord: "",
+    prevProps: this.props
+  };
+
+  static getDerivedStateFromProps(props, state) {
+    const prevProps = state.prevProps;
+    const keyWord = prevProps.keyWord !== props.keyWord ? props.keyWord : state.keyWord;
+    return {
+      prevProps: props,
+      keyWord
+    };
+  }
+
+  handleChangeKeyWord = event => {
+    const keyWord = event.target.value;
+    this.setState({
+      keyWord
+    });
+  };
   handleSearch = keyWord => {
-    this.props.search_movies(keyWord);
+    this.setState(
+      {
+        keyWord
+      },
+      this.props.search_movies(keyWord)
+    );
   };
   render() {
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 9 }
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 15 }
-      }
-    };
     return (
       <div className="container">
-        <div className="row">
+        <div className="row mb-4">
           <div className="col-12 d-flex justify-content-center">
             <div className="mt-5 w-50">
               <Search
                 placeholder="input search text"
                 size="large"
-                defaultValue={this.props.keyWord}
+                value={this.state.keyWord}
+                onChange={this.handleChangeKeyWord}
                 onSearch={keyWord => this.handleSearch(keyWord)}
               />
             </div>

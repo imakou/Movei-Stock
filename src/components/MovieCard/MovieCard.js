@@ -10,12 +10,21 @@ class MovieCard extends Component {
       <div className="col-md-3 col-sm-12 mb-4">
         <div className="border shadow-sm bg-white">
           <div className="OverFlowHidden">
-            <Link to={`movie/${data.id}`}>
-              <img
-                className="img-fluid imgScale"
-                src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.poster_path}`}
-                alt=""
-              />
+            <Link to={`/movie/${data.id}`}>
+              {data.poster_path ? (
+                <img
+                  className="img-fluid imgScale"
+                  src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${
+                    data.poster_path
+                  }`}
+                  alt=""
+                />
+              ) : (
+                <img
+                  src="https://fakeimg.pl/260x380/eee/333333,255/?text=No+Image&font=roboto"
+                  alt="No Image"
+                />
+              )}
             </Link>
           </div>
           <div className="p-2 d-flex justify-content-between align-items-center">

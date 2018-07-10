@@ -64,7 +64,7 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 98;
 }
 
 .MovieDetailEmptyPost {
@@ -74,7 +74,7 @@ body {
 }
 
 .MovieDetailJumbotron {
-  z-index: 101;
+  z-index: 98;
   // margin-top: -200px;
   // background-color: rgba(255, 255, 255, 0.8);
 }
@@ -168,7 +168,25 @@ body {
 .SearchResultsContent {
   // background-color: rgba(255, 255, 255, 0.815);
 }
+.SearchBarMovieCardCaption {
+  height: 55%;
+  color: white;
+  background: linear-gradient(transparent, black);
+  text-shadow: 1px 1px 1px black;
 
+  .SearchBarMovieCardCaptionReleaseDate {
+    font-size: 0.8rem;
+  }
+
+  > span {
+    width: 235px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 5px;
+  }
+}
 .SearchBarMovieCard {
   height: 100px;
   background-position: center top;
@@ -176,7 +194,7 @@ body {
 
 .SearchBarButton {
   position: relative;
-  z-index: 105;
+  z-index: 100;
 }
 
 .SearchJumbotron {
@@ -192,7 +210,7 @@ body {
   left: 0;
   right: 0;
   background-color: rgb(63, 63, 63);
-  z-index: 102;
+  z-index: 99;
   opacity: 0.9;
   transition: all 1.5s;
 }
@@ -247,11 +265,22 @@ body {
   font-weight: bold;
   padding-bottom: 0px !important;
 }
+.ant-rate {
+  font-size: 16px !important;
+}
+
+.ant-rate-star {
+  margin-right: 2px !important;
+}
+
+.ant-input-affix-wrapper {
+  height: 60px;
+}
 
 //react-autosuggest
 .react-autosuggest__container {
   position: relative;
-  z-index: 111;
+  z-index: 100;
 }
 
 .react-autosuggest__input {

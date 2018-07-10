@@ -1,6 +1,7 @@
 import { MOVIE_ACTIONS } from "../actions/MovieActions";
 
 const initialState = {
+  keyWord: "",
   popMovies: [],
   nowPlayingMovies: [],
   searchedMovies: [],
@@ -36,6 +37,18 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         searchedMovies: payload
+      };
+
+    case MOVIE_ACTIONS.FETCH_MORE_MOVIES_SUCCESSFUL:
+      return {
+        ...state,
+        searchedMovies: payload
+      };
+
+    case MOVIE_ACTIONS.UPDATE_KEYWORD_SUCCESSFUL:
+      return {
+        ...state,
+        keyWord: payload
       };
 
     case MOVIE_ACTIONS.EMPTY_SEARCH_MOVIES_SUCCESSFUL:

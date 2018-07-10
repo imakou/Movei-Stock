@@ -61,7 +61,7 @@ class MovieJumbotron extends Component {
                     <div className="mb-3">
                       <Rate
                         disabled
-                        allowHalf={true}
+                        allowHalf
                         value={getRate(currentMoive.vote_average)}
                       />
                     </div>
