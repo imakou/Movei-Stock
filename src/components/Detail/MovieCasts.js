@@ -9,11 +9,19 @@ const MovieCasts = props => {
         <div className="row">
           <div className="col-4">
             <div className="CastThumbnail">
-              <img
-                className="img-fluid imgScale rounded-circle"
-                alt="example"
-                src={`https://image.tmdb.org/t/p/w300_and_h300_face${e.profile_path}`}
-              />
+              {e.profile_path ? (
+                <img
+                  className="img-fluid imgScale rounded-circle"
+                  alt={e.title}
+                  src={`https://image.tmdb.org/t/p/w300_and_h300_face${e.profile_path}`}
+                />
+              ) : (
+                <img
+                  className="img-fluid imgScale rounded-circle"
+                  src="https://fakeimg.pl/600x600/eee/333333,255/?text=No+Image&font=roboto"
+                  alt="No Image"
+                />
+              )}
             </div>
           </div>
           <div className="col-8">

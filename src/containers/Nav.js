@@ -102,7 +102,9 @@ class Nav extends Component {
 
 Nav.propTypes = {
   searchedMovies: PropTypes.array,
-  search_movies: PropTypes.func.isRequired
+  search_movies: PropTypes.func,
+  empty_search_movies: PropTypes.func,
+  update_keyword: PropTypes.func
 };
 
 const mapStateToProps = state => {

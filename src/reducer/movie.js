@@ -5,6 +5,7 @@ const initialState = {
   popMovies: [],
   nowPlayingMovies: [],
   searchedMovies: [],
+  searchedMoviesTotalPage: undefined,
   currentMoive: null
 };
 
@@ -36,7 +37,8 @@ export const movies = (state = initialState, { type, payload }) => {
     case MOVIE_ACTIONS.SEARCH_MOVIES_SUCCESSFUL:
       return {
         ...state,
-        searchedMovies: payload
+        searchedMovies: payload.data,
+        searchedMoviesTotalPage: payload.page
       };
 
     case MOVIE_ACTIONS.FETCH_MORE_MOVIES_SUCCESSFUL:
@@ -54,7 +56,8 @@ export const movies = (state = initialState, { type, payload }) => {
     case MOVIE_ACTIONS.EMPTY_SEARCH_MOVIES_SUCCESSFUL:
       return {
         ...state,
-        searchedMovies: []
+        searchedMovies: [],
+        searchedMoviesTotalPage: initialState.searchedMoviesTotalPage
       };
 
     default:

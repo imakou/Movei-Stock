@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Button, Tooltip, Card, Icon, Rate } from "antd";
+import { List, Card } from "antd";
 import PropTypes from "prop-types";
 import MemberFavorites from "./MemberFavorites";
 import MemberRecentViewed from "./MemberRecentViewed";

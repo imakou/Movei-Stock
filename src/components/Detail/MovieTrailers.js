@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Modal } from "antd";
 import PropTypes from "prop-types";
 import ModalVideo from "react-modal-video";
 
@@ -14,17 +13,6 @@ class MovieTrailers extends Component {
       key,
       isOpen: true
     });
-  };
-
-  handleCancel = () => {
-    this.setState({
-      key: "",
-      isOpen: false
-    });
-  };
-
-  changeKey = key => {
-    this.setState({ key });
   };
 
   renderTrailers = () => {

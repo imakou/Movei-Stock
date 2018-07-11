@@ -31,7 +31,6 @@ class Search extends Component {
     this.props.empty_search_movies();
   }
   render() {
-    console.log("Hello foo"); // log is here
     return (
       <div className="position-relative">
         <div className="fullscreen-bg">
@@ -48,6 +47,7 @@ class Search extends Component {
             keyWord={this.props.keyWord}
             fetch_more_movies={this.props.fetch_more_movies}
             searchedMovies={this.props.searchedMovies}
+            searchedMoviesTotalPage={this.props.searchedMoviesTotalPage}
           />
         </div>
       </div>
@@ -63,6 +63,7 @@ Search.propTypes = {
 const mapStateToProps = state => {
   return {
     searchedMovies: state.movies.searchedMovies,
+    searchedMoviesTotalPage: state.movies.searchedMoviesTotalPage,
     keyWord: state.movies.keyWord
   };
 };
@@ -87,10 +88,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Search);
-
-{
-  /* <div className="container">
-        <SearchFilter />
-        <SearchResults />
-      </div> */
-}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Tabs, Badge, Card, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
@@ -17,7 +16,7 @@ class MovieCard extends Component {
                   src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${
                     data.poster_path
                   }`}
-                  alt=""
+                  alt={data.title}
                 />
               ) : (
                 <img
@@ -47,6 +46,8 @@ class MovieCard extends Component {
   }
 }
 
-MovieCard.propTypes = {};
+MovieCard.propTypes = {
+  data: PropTypes.object.isRequired
+};
 
 export default MovieCard;

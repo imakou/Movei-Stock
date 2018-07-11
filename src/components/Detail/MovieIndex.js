@@ -7,7 +7,7 @@ import { shuffle } from "lodash";
 import { Rate } from "antd";
 import { getRate } from "../../_utils";
 
-class MovieJumbotron extends Component {
+class MovieIndex extends Component {
   state = {
     BGColor: ""
   };
@@ -90,8 +90,8 @@ class MovieJumbotron extends Component {
   }
 }
 
-MovieJumbotron.propTypes = {
+MovieIndex.propTypes = {
   currentMoive: PropTypes.object.isRequired
 };
 
-export default MovieJumbotron;
+export default MovieIndex;

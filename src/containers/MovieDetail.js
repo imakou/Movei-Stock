@@ -4,7 +4,7 @@ import * as actions from "../actions/MovieActions";
 import { connect } from "react-redux";
 
 import MovieDetailLoading from "../components/Detail/MovieDetailLoading";
-import MovieJumbotron from "../components/Detail/MovieJumbotron";
+import MovieIndex from "../components/Detail/MovieIndex";
 
 class MovieDetail extends Component {
   state = {
@@ -39,7 +39,7 @@ class MovieDetail extends Component {
   render() {
     const { currentMoive } = this.state;
     const content = currentMoive ? (
-      <MovieJumbotron currentMoive={currentMoive} />
+      <MovieIndex currentMoive={currentMoive} />
     ) : (
       <MovieDetailLoading />
     );

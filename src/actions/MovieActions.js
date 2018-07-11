@@ -2,7 +2,6 @@ import { Axios } from "../_utils";
 import { shuffle, slice, cloneDeep } from "lodash";
 
 export const MOVIE_ACTIONS = {
-  FETCH_BY_KEYWORDS_SUCCESSFUL: "FETCH_BY_KEYWORDS_SUCCESSFUL",
   FETCH_POP_MOVIES_SUCCESSFUL: "FETCH_POP_MOVIES_SUCCESSFUL",
   FETCH_MOVIE_DETAIL_SUCCESSFUL: "FETCH_MOVIE_DETAIL_SUCCESSFUL",
   FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL: "FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL",
@@ -14,13 +13,6 @@ export const MOVIE_ACTIONS = {
 };
 
 // ————— call by actions —————
-
-function fetch_by_keywords_successful(payload) {
-  return {
-    type: MOVIE_ACTIONS.FETCH_BY_KEYWORDS_SUCCESSFUL,
-    payload
-  };
-}
 
 function fetch_pop_movies_successful(payload) {
   return {
@@ -151,7 +143,8 @@ export function search_movies(keyWord) {
     try {
       const { data } = await Axios.get(`/search/movie?query=${keyWord}`);
       console.log("Hello data", data); // log is here
-      dispatch(search_movies_successful(data.results));
+      const { results, total_pages } = data;
+      dispatch(search_movies_successful({ data: results, page: total_pages }));
       dispatch(update_keyword(keyWord));
     } catch (error) {
       console.log("search_movie", error); // log is here
@@ -165,6 +158,7 @@ export function fetch_more_movies(keyWord, page) {
       let curMovies = cloneDeep(getState().movies.searchedMovies);
       const { data } = await Axios.get(`/search/movie?query=${keyWord}&page=${page}`);
       curMovies.push(...data.results);
+      console.log("Hello data", data); // log is here
       console.log("Hello curMovies", curMovies); // log is here
       dispatch(fetch_more_movies_successful(curMovies));
     } catch (error) {

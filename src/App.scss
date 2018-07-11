@@ -245,6 +245,12 @@ body {
   min-height: 100%;
   z-index: 1;
 }
+
+.btnLoadMoreMovie {
+  width: 100%;
+  padding: 10px !important;
+  font-size: 20px !important;
+}
 // Overwrite ANTD's style
 .ant-card-actions {
   background-color: #fff !important;

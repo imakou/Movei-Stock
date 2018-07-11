@@ -34,15 +34,12 @@ class HomeJumbotorn extends Component {
                   <p>{currentMovie.overview}</p>
                 </div>
                 <div className="col-5 pb-5 d-flex align-items-end justify-content-center">
-                  <button type="button" className="btn btn-success">
-                    <Icon className="mr-1" type="caret-right" />Trailer
-                  </button>
-                  <button type="button" className="ml-3 btn btn-outline-light">
-                    <Link to={`/movie/${currentMovie.id}`}>
+                  <Link to={`/movie/${currentMovie.id}`}>
+                    <button type="button" className="ml-3 btn btn-light">
                       <Icon className="mr-1" type="search" />Detail
-                    </Link>
-                  </button>
-                  <button type="button" className="ml-3 btn btn-outline-danger">
+                    </button>
+                  </Link>
+                  <button type="button" className="ml-3 btn btn-danger">
                     <Icon className="mr-1" type="plus" /> Favorite
                   </button>
                 </div>
@@ -58,6 +55,9 @@ class HomeJumbotorn extends Component {
   }
 }
 
-HomeJumbotorn.propTypes = {};
+HomeJumbotorn.propTypes = {
+  fetch_now_playing_movies: PropTypes.func,
+  nowPlayingMovies: PropTypes.array
+};
 
 export default HomeJumbotorn;

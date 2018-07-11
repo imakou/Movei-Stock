@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import Autosuggest from "react-autosuggest";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -16,8 +16,6 @@ class SearchBar extends PureComponent {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log("Hello nextProps.searchedMovies", nextProps.searchedMovies); // log is here
-    console.log("Hello prevState.suggestions", prevState.suggestions); // log is here
     if (nextProps.searchedMovies.length !== prevState.suggestions.length) {
       return { suggestions: nextProps.searchedMovies.slice(0, 5) };
     } else {
@@ -56,6 +54,10 @@ class SearchBar extends PureComponent {
     this.props.history.push(`/search/${tempKeyWord}`);
   };
 
+  handleDisMask = () => {
+    this.onSuggestionsClearRequested();
+    this.props.empty_search_movies();
+  };
   renderSuggestion = suggestion => {
     const BGImage = {
       backgroundImage: `url("https://image.tmdb.org/t/p/w300${suggestion.backdrop_path}")`
@@ -125,14 +127,11 @@ class SearchBar extends PureComponent {
         />
         <div className="SearchBarButton">
           <Button className="ml-1" onClick={this.handleMore}>
-            <Icon type="search" />More
+            <Icon type="search" />
+            {this.state.keyWord ? "More" : "SEARCH"}
           </Button>
         </div>
-        <div
-          style={{ ...mask }}
-          onClick={() => this.onSuggestionsClearRequested()}
-          className="fullMask"
-        />
+        <div style={{ ...mask }} onClick={this.handleDisMask} className="fullMask" />
       </React.Fragment>
     );
   }

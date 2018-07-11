@@ -55,6 +55,10 @@ class SearchFilter extends Component {
   }
 }
 
-SearchFilter.propTypes = {};
+SearchFilter.propTypes = {
+  search_movies: PropTypes.func,
+  update_keyword: PropTypes.func,
+  keyWord: PropTypes.string
+};
 
 export default SearchFilter;
