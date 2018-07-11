@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Icon, Spin } from "antd";
+import { Link } from "react-router-dom";
 
 class HomeJumbotorn extends Component {
   componentDidMount() {
@@ -37,7 +38,9 @@ class HomeJumbotorn extends Component {
                     <Icon className="mr-1" type="caret-right" />Trailer
                   </button>
                   <button type="button" className="ml-3 btn btn-outline-light">
-                    <Icon className="mr-1" type="search" />Detail
+                    <Link to={`/movie/${currentMovie.id}`}>
+                      <Icon className="mr-1" type="search" />Detail
+                    </Link>
                   </button>
                   <button type="button" className="ml-3 btn btn-outline-danger">
                     <Icon className="mr-1" type="plus" /> Favorite

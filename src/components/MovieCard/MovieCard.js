@@ -21,6 +21,7 @@ class MovieCard extends Component {
                 />
               ) : (
                 <img
+                  className="img-fluid imgScale"
                   src="https://fakeimg.pl/260x380/eee/333333,255/?text=No+Image&font=roboto"
                   alt="No Image"
                 />

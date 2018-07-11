@@ -31,6 +31,7 @@ class Search extends Component {
     this.props.empty_search_movies();
   }
   render() {
+    console.log("Hello foo"); // log is here
     return (
       <div className="position-relative">
         <div className="fullscreen-bg">

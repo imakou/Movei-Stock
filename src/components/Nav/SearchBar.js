@@ -16,6 +16,8 @@ class SearchBar extends PureComponent {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("Hello nextProps.searchedMovies", nextProps.searchedMovies); // log is here
+    console.log("Hello prevState.suggestions", prevState.suggestions); // log is here
     if (nextProps.searchedMovies.length !== prevState.suggestions.length) {
       return { suggestions: nextProps.searchedMovies.slice(0, 5) };
     } else {
@@ -36,7 +38,6 @@ class SearchBar extends PureComponent {
         this.props.update_keyword("");
       } else {
         this.props.search_movies(newValue);
-        this.props.update_keyword(newValue);
       }
     }, 500);
   };

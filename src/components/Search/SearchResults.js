@@ -14,10 +14,10 @@ const SearchResults = props => {
   };
 
   const fetchMoreMovies = () => {
-    curPage + 1;
+    curPage++;
     props.fetch_more_movies(props.keyWord, curPage);
   };
-
+  console.log("Hello props.searchedMovies", props.searchedMovies); // log is here
   return (
     <div className="row">
       <div className="col-12 SearchResults">

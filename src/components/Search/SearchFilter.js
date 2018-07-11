@@ -29,7 +29,9 @@ class SearchFilter extends Component {
       {
         keyWord
       },
-      this.props.search_movies(keyWord)
+      () => {
+        this.props.search_movies(keyWord);
+      }
     );
   };
   render() {
