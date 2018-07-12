@@ -64,7 +64,14 @@ class Nav extends Component {
             <Link to="/">
               <img className="NavLogo" src={logo} alt="" />
             </Link>
-            <button
+            <SearchBar
+              search_movies={this.props.search_movies}
+              empty_search_movies={this.props.empty_search_movies}
+              update_keyword={this.props.update_keyword}
+              history={this.props.history}
+              searchedMovies={this.props.searchedMovies}
+            />
+            {/* <button
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -74,22 +81,13 @@ class Nav extends Component {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon" />
-            </button>
+            </button> */}
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <SearchBar
-                search_movies={this.props.search_movies}
-                empty_search_movies={this.props.empty_search_movies}
-                update_keyword={this.props.update_keyword}
-                history={this.props.history}
-                searchedMovies={this.props.searchedMovies}
-              />
-            </div>
-            <div className="ml-4">
+            {/* <div className="ml-4">
               <Dropdown overlay={content} placement="bottomCenter">
                 <Avatar size="large" icon="user" />
               </Dropdown>
-            </div>
+            </div> */}
             <div className="ml-4">
               <LoginModal />
             </div>

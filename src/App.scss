@@ -298,6 +298,9 @@ body {
   font-size: 16px;
   border: 1px solid #aaa;
   border-radius: 4px;
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 }
 
 .react-autosuggest__input:focus {

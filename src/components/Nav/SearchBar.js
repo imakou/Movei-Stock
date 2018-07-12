@@ -125,10 +125,10 @@ class SearchBar extends PureComponent {
           renderSuggestion={this.renderSuggestion}
           inputProps={inputProps}
         />
-        <div className="SearchBarButton">
+        <div className="SearchBarButton d-none d-sm-none d-md-none d-lg-block">
           <Button className="ml-1" onClick={this.handleMore}>
             <Icon type="search" />
-            {this.state.keyWord ? "More" : "SEARCH"}
+            {/* {this.state.keyWord ? "More" : "SEARCH"} */}
           </Button>
         </div>
         <div style={{ ...mask }} onClick={this.handleDisMask} className="fullMask" />
