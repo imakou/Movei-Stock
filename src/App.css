@@ -302,6 +302,19 @@ body {
   padding: 10px !important;
   font-size: 20px !important; }
 
+.footerContainer {
+  background-color: #1c659a;
+  color: white;
+  font-size: 12px; }
+  .footerContainer a {
+    color: white;
+    text-decoration: underline; }
+    .footerContainer a:hover {
+      color: rgba(255, 255, 255, 0.712); }
+
+.NavContainer {
+  background-color: #03406d; }
+
 .ant-card-actions {
   background-color: #fff !important; }
 

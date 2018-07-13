@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Avatar, Menu, Icon, Dropdown } from "antd";
+import { Menu, Icon } from "antd";
 import logo from "../logo.svg";
 import LoginModal from "../components/Nav/LoginModal";
 import SearchBar from "../components/Nav/SearchBar";
@@ -40,26 +40,9 @@ function hoverable(WrappedComponent, propName = "hover") {
 
 class Nav extends Component {
   render() {
-    const content = (
-      <Menu style={{ width: "150px" }}>
-        <Menu.Item key="1">
-          <Icon type="user" /> Account
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="2">
-          <Icon type="info-circle-o" /> Summary
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">
-          <span onClick={this.handleLogOut}>
-            <Icon type="poweroff" /> Log Out
-          </span>
-        </Menu.Item>
-      </Menu>
-    );
     return (
       <React.Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light NavContainer">
           <div className="container">
             <Link to="/">
               <img className="NavLogo" src={logo} alt="" />
