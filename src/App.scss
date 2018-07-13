@@ -251,6 +251,22 @@ body {
   padding: 10px !important;
   font-size: 20px !important;
 }
+
+.footerContainer {
+  background-color: #1c659a;
+  color: white;
+  font-size: 12px;
+  a {
+    color: white;
+    text-decoration: underline;
+    &:hover {
+      color: rgba(255, 255, 255, 0.712);
+    }
+  }
+}
+.NavContainer {
+  background-color: #03406d;
+}
 // Overwrite ANTD's style
 .ant-card-actions {
   background-color: #fff !important;
@@ -291,7 +307,7 @@ body {
 
 .react-autosuggest__input {
   width: 280px;
-  height: 30px;
+  height: 33px;
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;

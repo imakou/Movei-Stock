@@ -12,7 +12,7 @@ class MovieCards extends Component {
       <section className="bg-light">
         <div className="container pt-5 pb-5">
           <div className="row">
-            <div className="col-10">
+            <div className="col-12">
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Now Playing" key="1">
                   <MovieBlock data={this.props.nowPlayingMovies} />
@@ -22,7 +22,7 @@ class MovieCards extends Component {
                 </TabPane>
               </Tabs>
             </div>
-            <div className="col-2 mb-4">
+            {/* <div className="col-2 mb-4">
               <h4>Reviews</h4>
               <Card
                 className="shadow-sm"
@@ -48,9 +48,9 @@ class MovieCards extends Component {
                   }
                 />
               </Card>
-            </div>
+            </div> */}
           </div>
-          <div className="row mt-3">
+          {/* <div className="row mt-3">
             <div className="col-9">
               <h5>People Most Like</h5>
               <div className="row">
@@ -132,7 +132,7 @@ class MovieCards extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     );

@@ -106,7 +106,7 @@ class SearchBar extends PureComponent {
   render() {
     const { keyWord, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Movie's name or keyword...",
+      placeholder: "Search something...?",
       value: keyWord,
       onChange: this.onChange,
       onKeyDown: this.onKeyDown
@@ -128,9 +128,10 @@ class SearchBar extends PureComponent {
         <div className="SearchBarButton d-none d-sm-none d-md-none d-lg-block">
           <Button className="ml-1" onClick={this.handleMore}>
             <Icon type="search" />
-            {/* {this.state.keyWord ? "More" : "SEARCH"} */}
+            {this.state.keyWord ? "More" : "SEARCH"}
           </Button>
         </div>
+
         <div style={{ ...mask }} onClick={this.handleDisMask} className="fullMask" />
       </React.Fragment>
     );

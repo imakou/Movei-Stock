@@ -29,19 +29,21 @@ class HomeJumbotorn extends Component {
           <div className="AppDescription">
             <div className="container ">
               <div className="row ">
-                <div className="col-7">
+                <div className="col-sm-12 col-md-7">
                   <h1>{currentMovie.title}</h1>
                   <p>{currentMovie.overview}</p>
                 </div>
-                <div className="col-5 pb-5 d-flex align-items-end justify-content-center">
-                  <Link to={`/movie/${currentMovie.id}`}>
-                    <button type="button" className="ml-3 btn btn-light">
-                      <Icon className="mr-1" type="search" />Detail
+                <div className="col-sm-12 col-md-5 pb-5 d-flex align-items-end justify-content-center">
+                  <div className="row">
+                    <Link to={`/movie/${currentMovie.id}`}>
+                      <button type="button" className="ml-3 btn btn-light">
+                        <Icon className="mr-1" type="search" />Detail
+                      </button>
+                    </Link>
+                    <button type="button" className="ml-3 btn btn-danger">
+                      <Icon className="mr-1" type="plus" /> Favorite
                     </button>
-                  </Link>
-                  <button type="button" className="ml-3 btn btn-danger">
-                    <Icon className="mr-1" type="plus" /> Favorite
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>

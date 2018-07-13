@@ -21,7 +21,7 @@ const MovieBasicInfo = props => {
 
   return (
     <div>
-      <h3>Movie's Info</h3>
+      <h4>Movie's Info</h4>
       <Collapse bordered={false} defaultActiveKey={["1", "2", "3", "4", "5", "6", "7"]}>
         <Panel showArrow={false} header="Title" key="1">
           <p className="mb-0">{data.title}</p>

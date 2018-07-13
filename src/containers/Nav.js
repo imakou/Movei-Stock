@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Avatar, Menu, Icon, Dropdown } from "antd";
+import { Menu, Icon } from "antd";
 import logo from "../logo.svg";
 import LoginModal from "../components/Nav/LoginModal";
 import SearchBar from "../components/Nav/SearchBar";
@@ -40,38 +40,23 @@ function hoverable(WrappedComponent, propName = "hover") {
 
 class Nav extends Component {
   render() {
-    const content = (
-      <Menu style={{ width: "150px" }}>
-        <Menu.Item key="1">
-          <Icon type="user" /> Account
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="2">
-          <Icon type="info-circle-o" /> Summary
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">
-          <span onClick={this.handleLogOut}>
-            <Icon type="poweroff" /> Log Out
-          </span>
-        </Menu.Item>
-      </Menu>
-    );
     return (
       <React.Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light NavContainer">
           <div className="container">
-            <Link to="/">
-              <img className="NavLogo" src={logo} alt="" />
-            </Link>
-            <SearchBar
-              search_movies={this.props.search_movies}
-              empty_search_movies={this.props.empty_search_movies}
-              update_keyword={this.props.update_keyword}
-              history={this.props.history}
-              searchedMovies={this.props.searchedMovies}
-            />
-            {/* <button
+            <div className="w-100 d-flex justify-content-between ml-1">
+              <div className="d-flex align-items-center">
+                <Link to="/">
+                  <img className="NavLogo mr-2" src={logo} alt="" />
+                </Link>
+                <SearchBar
+                  search_movies={this.props.search_movies}
+                  empty_search_movies={this.props.empty_search_movies}
+                  update_keyword={this.props.update_keyword}
+                  history={this.props.history}
+                  searchedMovies={this.props.searchedMovies}
+                />
+                {/* <button
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -81,15 +66,17 @@ class Nav extends Component {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon" />
-            </button> */}
-
-            {/* <div className="ml-4">
+            </button> 
+            <div className="ml-4">
               <Dropdown overlay={content} placement="bottomCenter">
                 <Avatar size="large" icon="user" />
               </Dropdown>
             </div> */}
-            <div className="ml-4">
-              <LoginModal />
+              </div>
+
+              <div className="ml-4 d-flex align-items-center">
+                <LoginModal />
+              </div>
             </div>
           </div>
         </nav>

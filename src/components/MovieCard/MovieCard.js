@@ -6,7 +6,7 @@ class MovieCard extends Component {
   render() {
     const { data } = this.props;
     return (
-      <div className="col-md-3 col-sm-12 mb-4">
+      <div className="col-6 col-sm-4 col-md-3 mb-4">
         <div className="border shadow-sm bg-white">
           <div className="OverFlowHidden">
             <Link to={`/movie/${data.id}`}>

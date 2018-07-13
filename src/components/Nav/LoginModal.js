@@ -27,7 +27,9 @@ class LoginModal extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.showModal}>Login</Button>
+        <Button disabled onClick={this.showModal}>
+          Login
+        </Button>
         <Modal
           footer={null}
           visible={this.state.visible}
