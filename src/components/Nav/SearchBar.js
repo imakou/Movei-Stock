@@ -116,7 +116,7 @@ class SearchBar extends PureComponent {
       : { visibility: "hidden", opacity: 0 };
 
     return (
-      <React.Fragment>
+      <div className="d-flex justify-content-start ml-1">
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -133,7 +133,7 @@ class SearchBar extends PureComponent {
         </div>
 
         <div style={{ ...mask }} onClick={this.handleDisMask} className="fullMask" />
-      </React.Fragment>
+      </div>
     );
   }
 }
