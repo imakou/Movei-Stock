@@ -19,7 +19,7 @@ class MovieTrailers extends Component {
     const { trailerData } = this.props;
     return trailerData.map(e => {
       return (
-        <div key={e.id} className="col-md-4 col-sm-12 mb-2 ">
+        <div key={e.id} className="col-6 col-sm-6 col-md-4 mb-2 ">
           <div className="OverFlowHidden border" onClick={() => this.showModal(e.key)}>
             <img
               src={`https://img.youtube.com/vi/${e.key}/0.jpg`}

@@ -1,3 +1,3 @@
 ## Movie Stock
 
-A side-project to build a movie searching web app.
+A movie infomation website application as a side-project based on React and Redux.
