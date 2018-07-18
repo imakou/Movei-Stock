@@ -44,17 +44,19 @@ class Nav extends Component {
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light NavContainer">
           <div className="container">
-            <Link to="/">
-              <img className="NavLogo" src={logo} alt="" />
-            </Link>
-            <SearchBar
-              search_movies={this.props.search_movies}
-              empty_search_movies={this.props.empty_search_movies}
-              update_keyword={this.props.update_keyword}
-              history={this.props.history}
-              searchedMovies={this.props.searchedMovies}
-            />
-            {/* <button
+            <div className="w-100 d-flex justify-content-between ml-1">
+              <div className="d-flex align-items-center">
+                <Link to="/">
+                  <img className="NavLogo mr-2" src={logo} alt="" />
+                </Link>
+                <SearchBar
+                  search_movies={this.props.search_movies}
+                  empty_search_movies={this.props.empty_search_movies}
+                  update_keyword={this.props.update_keyword}
+                  history={this.props.history}
+                  searchedMovies={this.props.searchedMovies}
+                />
+                {/* <button
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -64,15 +66,17 @@ class Nav extends Component {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon" />
-            </button> */}
-
-            {/* <div className="ml-4">
+            </button> 
+            <div className="ml-4">
               <Dropdown overlay={content} placement="bottomCenter">
                 <Avatar size="large" icon="user" />
               </Dropdown>
             </div> */}
-            <div className="ml-4">
-              <LoginModal />
+              </div>
+
+              <div className="ml-4 d-flex align-items-center">
+                <LoginModal />
+              </div>
             </div>
           </div>
         </nav>

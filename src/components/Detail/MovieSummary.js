@@ -13,7 +13,7 @@ const MovieSummary = props => {
         </div>
       </div>
       <div className="col-md-12 mt-5">
-        <h3>Reviews</h3>
+        <h4>Reviews</h4>
         <div className="row">
           <MovieReviews reviews={currentMoive.reviews} />
         </div>
