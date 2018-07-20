@@ -19,7 +19,7 @@ class Footer extends Component {
                   👍👍👍
                 </span>
                 <span className="d-block mt-2">
-                  <a target="_blank" href="https://www.themoviedb.org/">
+                  <a target="_blank" href="https://github.com/imakou/Movei-Stock">
                     <Icon style={{ fontSize: "22px" }} type="github" />
                   </a>
                 </span>

@@ -17,12 +17,14 @@ class HomeJumbotorn extends Component {
       );
     } else {
       const currentMovie = nowPlayingMovies[0];
+      const backdrop_path = currentMovie.backdrop_path
+        ? `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMovie.backdrop_path}`
+        : "https://fakeimg.pl/1400x450/eee/333333,255/?text=No+Image&font=roboto";
+      console.log("Hello backdrop_path", backdrop_path); // log is here
       return (
         <section
           style={{
-            backgroundImage: `url('https://image.tmdb.org/t/p/w1400_and_h450_face${
-              currentMovie.backdrop_path
-            }')`
+            backgroundImage: `url(${backdrop_path})`
           }}
           className="AppJumbotron d-flex align-items-end justify-content-center"
         >

@@ -6,7 +6,7 @@ const initialState = {
   nowPlayingMovies: [],
   searchedMovies: [],
   searchedMoviesTotalPage: undefined,
-  currentMoive: null
+  currentMovie: null
 };
 
 export const movies = (state = initialState, { type, payload }) => {
@@ -26,13 +26,13 @@ export const movies = (state = initialState, { type, payload }) => {
     case MOVIE_ACTIONS.FETCH_MOVIE_DETAIL_SUCCESSFUL:
       return {
         ...state,
-        currentMoive: payload
+        currentMovie: payload
       };
 
     case MOVIE_ACTIONS.EMPTY_MOVIE_DETAIL_SUCCESSFUL:
       return {
         ...state,
-        currentMoive: null
+        currentMovie: null
       };
     case MOVIE_ACTIONS.SEARCH_MOVIES_SUCCESSFUL:
       return {

@@ -12,10 +12,10 @@ class MovieIndex extends Component {
     BGColor: ""
   };
   componentDidMount() {
-    const { currentMoive } = this.props;
+    const { currentMovie } = this.props;
 
     Vibrant.from(
-      `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMoive.backdrop_path}`
+      `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMovie.backdrop_path}`
     )
       .getSwatches()
       .then(palette => {
@@ -24,17 +24,18 @@ class MovieIndex extends Component {
   }
 
   render() {
-    console.log("Hello currentMoive", this.props.currentMoive); // log is here
-    const { currentMoive } = this.props;
-    const trailerData = shuffle(currentMoive.videos).slice(0, 3);
-
+    console.log("Hello currentMovie", this.props.currentMovie); // log is here
+    const { currentMovie } = this.props;
+    const trailerData = shuffle(currentMovie.videos).slice(0, 3);
+    const backdrop_path = currentMovie.backdrop_path
+      ? `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMovie.backdrop_path}`
+      : "https://fakeimg.pl/1400x450/758692/909090/?text=No+Image&font=roboto";
+    console.log("Hello backdrop_path", backdrop_path); // log is here
     return (
       <React.Fragment>
         <section
           style={{
-            backgroundImage: `url("https://image.tmdb.org/t/p/w1400_and_h450_face${
-              currentMoive.backdrop_path
-            }")`
+            backgroundImage: `url(${backdrop_path})`
           }}
           className="AppJumbotron d-flex align-items-stretch position-relative"
         >
@@ -48,7 +49,7 @@ class MovieIndex extends Component {
                 <img
                   className="img-fluid"
                   src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${
-                    currentMoive.poster_path
+                    currentMovie.poster_path
                   }`}
                   alt=""
                 />
@@ -56,16 +57,16 @@ class MovieIndex extends Component {
               <div className="col-md-8 col-sm-12 p-4 d-flex flex-column justify-content-between">
                 <div className="row">
                   <div className="col-md-12 ">
-                    <h3>{currentMoive.title}</h3>
-                    <h6 className="font-weight-light">{currentMoive.release_date}</h6>
+                    <h3>{currentMovie.title}</h3>
+                    <h6 className="font-weight-light">{currentMovie.release_date}</h6>
                     <div className="mb-3">
                       <Rate
                         disabled
                         allowHalf
-                        value={getRate(currentMoive.vote_average)}
+                        value={getRate(currentMovie.vote_average)}
                       />
                     </div>
-                    <p>{currentMoive.overview}</p>
+                    <p>{currentMovie.overview}</p>
                   </div>
                 </div>
                 <div className="row align-self-start">
@@ -84,14 +85,14 @@ class MovieIndex extends Component {
             </div>
           </div>
         </section>
-        <MovieContent currentMoive={currentMoive} />
+        <MovieContent currentMovie={currentMovie} />
       </React.Fragment>
     );
   }
 }
 
 MovieIndex.propTypes = {
-  currentMoive: PropTypes.object.isRequired
+  currentMovie: PropTypes.object.isRequired
 };
 
 export default MovieIndex;
