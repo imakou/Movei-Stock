@@ -20,6 +20,24 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '1099599653532861',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v3.1'
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <title>Movie Stock</title>
 </head>
 
