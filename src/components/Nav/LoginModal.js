@@ -38,7 +38,7 @@ class LoginModal extends Component {
           <div id="LoginForm">
             <Tabs defaultActiveKey="1">
               <TabPane tab="Sign In" key="1">
-                <LoginSignIn />
+                <LoginSignIn fetch_facebook_token={this.props.fetch_facebook_token} />
               </TabPane>
               <TabPane tab="Create One" key="2">
                 <LoginSignUp />
@@ -51,6 +51,8 @@ class LoginModal extends Component {
   }
 }
 
-LoginModal.propTypes = {};
+LoginModal.propTypes = {
+  fetch_facebook_token: PropTypes.func.isRequired
+};
 
 export default LoginModal;

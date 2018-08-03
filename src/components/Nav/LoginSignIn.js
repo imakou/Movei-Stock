@@ -14,9 +14,12 @@ class LoginForm extends Component {
   };
 
   FBLogin = value => {
+    const THIS = this;
     window.FB.login(
       function(response) {
         console.log("Hello response", response); // log is here
+        console.log("Hello this", this); // log is here
+        THIS.props.fetch_facebook_token(response);
       },
       { scope: "public_profile,email" }
     );
