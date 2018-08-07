@@ -12,6 +12,23 @@ class LoginForm extends Component {
       }
     });
   };
+
+  FBLogin = value => {
+    const THIS = this;
+    window.FB.login(
+      function(response) {
+        console.log("Hello response", response); // log is here
+        console.log("Hello this", this); // log is here
+        THIS.props.fetch_facebook_token(response);
+      },
+      { scope: "public_profile,email" }
+    );
+  };
+
+  commentContent = value => {
+    console.log("Hello value", value);
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -49,9 +66,9 @@ class LoginForm extends Component {
             Sign In
           </Button>
           <Divider>or</Divider>
-          <a href="#" className="sb sb-facebook w-100">
+          <span className="sb sb-facebook w-100" onClick={this.FBLogin}>
             Sign in with Facebook
-          </a>
+          </span>
         </FormItem>
       </Form>
     );

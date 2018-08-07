@@ -8,6 +8,10 @@ export const Axios = axios.create({
   }
 });
 
+export const AxiosAuth = axios.create({
+  baseURL: "https://luckstar77y-movie-server.herokuapp.com"
+});
+
 export const RandomBGC = () => {
   const colors = [
     "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
