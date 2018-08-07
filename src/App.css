@@ -198,7 +198,8 @@ body {
 
 .MovieCard:hover {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
-  border-color: rgba(0, 0, 0, 0.09); }
+  border-color: rgba(0, 0, 0, 0.09);
+  cursor: pointer; }
 
 .OverFlowHidden {
   overflow: hidden; }

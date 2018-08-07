@@ -30,7 +30,6 @@ class MovieIndex extends Component {
     const backdrop_path = currentMovie.backdrop_path
       ? `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMovie.backdrop_path}`
       : "https://fakeimg.pl/1400x450/758692/909090/?text=No+Image&font=roboto";
-    console.log("Hello backdrop_path", backdrop_path); // log is here
     return (
       <React.Fragment>
         <section

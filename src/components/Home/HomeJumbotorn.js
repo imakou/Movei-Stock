@@ -8,6 +8,7 @@ class HomeJumbotorn extends Component {
     this.props.fetch_now_playing_movies();
   }
   renderHomeJumbotorn = () => {
+    console.log("Hello this.props", this.props); // log is here
     const { nowPlayingMovies } = this.props;
     if (nowPlayingMovies.length === 0) {
       return (
@@ -20,7 +21,6 @@ class HomeJumbotorn extends Component {
       const backdrop_path = currentMovie.backdrop_path
         ? `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMovie.backdrop_path}`
         : "https://fakeimg.pl/1400x450/eee/333333,255/?text=No+Image&font=roboto";
-      console.log("Hello backdrop_path", backdrop_path); // log is here
       return (
         <section
           style={{

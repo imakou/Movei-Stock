@@ -40,7 +40,6 @@ class SearchResults extends Component {
   };
 
   render() {
-    console.log("Hello this.state", this.state); // log is here
     return (
       <div className="row pb-5">
         <div className="col-12 SearchResults">

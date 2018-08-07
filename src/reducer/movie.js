@@ -20,13 +20,13 @@ export const movies = (state = initialState, action) => {
     case MOVIE_ACTIONS.FETCH_NOW_PLAYING_MOVIES_SUCCESSFUL:
       return {
         ...state,
-        nowPlayingMovies: action.payload
+        nowPlayingMovies: action.nowPlayingMovies
       };
 
     case MOVIE_ACTIONS.FETCH_MOVIE_DETAIL_SUCCESSFUL:
       return {
         ...state,
-        currentMovie: action.payload
+        currentMovie: action.moiveDetail
       };
 
     case MOVIE_ACTIONS.EMPTY_MOVIE_DETAIL_SUCCESSFUL:
@@ -37,20 +37,20 @@ export const movies = (state = initialState, action) => {
     case MOVIE_ACTIONS.SEARCH_MOVIES_SUCCESSFUL:
       return {
         ...state,
-        searchedMovies: action.payload.data,
-        searchedMoviesTotalPage: action.payload.page
+        searchedMovies: action.searchedMovies,
+        searchedMoviesTotalPage: action.total_pages
       };
 
     case MOVIE_ACTIONS.FETCH_MORE_MOVIES_SUCCESSFUL:
       return {
         ...state,
-        searchedMovies: action.payload
+        searchedMovies: action.newMovieSet
       };
 
     case MOVIE_ACTIONS.UPDATE_KEYWORD_SUCCESSFUL:
       return {
         ...state,
-        keyWord: action.payload
+        keyWord: action.keyWord
       };
 
     case MOVIE_ACTIONS.EMPTY_SEARCH_MOVIES_SUCCESSFUL:
