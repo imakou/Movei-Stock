@@ -29,8 +29,10 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start-js": "HTTPS=true react-scripts start",
+    "https-start-js": "HTTPS=true react-scripts start",
+    "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
+    "start-https": "npm-run-all -p watch-css https-start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
