@@ -6,7 +6,8 @@ import logo from "../logo.svg";
 import LoginModal from "../components/Nav/LoginModal";
 import SearchBar from "../components/Nav/SearchBar";
 import { connect } from "react-redux";
-import * as actions from "../actions/MovieActions";
+import * as MovieActions from "../actions/MovieActions";
+import * as AuthActions from "../actions/AuthActions";
 import { withRouter } from "react-router-dom";
 
 function hoverable(WrappedComponent, propName = "hover") {
@@ -75,7 +76,7 @@ class Nav extends Component {
               </div>
 
               <div className="ml-4 d-flex align-items-center">
-                <LoginModal />
+                <LoginModal fetch_facebook_token={this.props.fetch_facebook_token} />
               </div>
             </div>
           </div>
@@ -101,13 +102,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     search_movies: keyWord => {
-      dispatch(actions.search_movies(keyWord));
+      dispatch(MovieActions.search_movies(keyWord));
     },
     empty_search_movies: () => {
-      dispatch(actions.empty_search_movies());
+      dispatch(MovieActions.empty_search_movies());
     },
     update_keyword: keyWord => {
-      dispatch(actions.update_keyword(keyWord));
+      dispatch(MovieActions.update_keyword(keyWord));
+    },
+    fetch_facebook_token: AuthData => {
+      dispatch(AuthActions.fetch_facebook_token(AuthData));
     }
   };
 };
