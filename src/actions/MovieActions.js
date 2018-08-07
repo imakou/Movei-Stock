@@ -14,10 +14,10 @@ export const MOVIE_ACTIONS = {
 
 // ————— call by actions —————
 
-function fetch_pop_movies_successful(payload) {
+function fetch_pop_movies_successful(popMovies) {
   return {
     type: MOVIE_ACTIONS.FETCH_POP_MOVIES_SUCCESSFUL,
-    payload
+    popMovies
   };
 }
 
@@ -75,7 +75,17 @@ export function fetch_pop_movies() {
     try {
       const result = await Axios.get("/movie/popular");
       const movies = slice(shuffle(result.data.results), 0, 8);
-      dispatch(fetch_pop_movies_successful(movies));
+      const popMovies = movies.map(e => {
+        return {
+          id: e.id,
+          vote_average: e.vote_average,
+          title: e.title,
+          poster_path: e.poster_path,
+          overview: e.overview,
+          release_date: e.release_date
+        };
+      });
+      dispatch(fetch_pop_movies_successful(popMovies));
     } catch (error) {
       console.log("fetch_popmovies", error); // log is here
     }

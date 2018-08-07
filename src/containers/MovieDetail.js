@@ -9,18 +9,18 @@ import MovieIndex from "../components/Detail/MovieIndex";
 class MovieDetail extends Component {
   state = {
     movieId: this.props.match.params.id,
-    currentMoive: this.props.currentMoive
+    currentMovie: this.props.currentMovie
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { currentMoive, match } = props;
+    const { currentMovie, match } = props;
     const movieId = match.params.id;
     if (state.movieId !== movieId) {
       props.fetch_movie_detail(movieId);
       return { movieId };
     }
-    if (currentMoive) {
-      return { currentMoive };
+    if (currentMovie) {
+      return { currentMovie };
     }
 
     return null;
@@ -37,9 +37,9 @@ class MovieDetail extends Component {
   }
 
   render() {
-    const { currentMoive } = this.state;
-    const content = currentMoive ? (
-      <MovieIndex currentMoive={currentMoive} />
+    const { currentMovie } = this.state;
+    const content = currentMovie ? (
+      <MovieIndex currentMovie={currentMovie} />
     ) : (
       <MovieDetailLoading />
     );
@@ -51,7 +51,7 @@ MovieDetail.propTypes = {};
 
 const mapStateToProps = state => {
   return {
-    currentMoive: state.movies.currentMoive
+    currentMovie: state.movies.currentMovie
   };
 };
 
