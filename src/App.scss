@@ -268,6 +268,9 @@ body {
 .NavContainer {
   background-color: #03406d;
 }
+.PointerEffect {
+  cursor: pointer;
+}
 // Overwrite ANTD's style
 .ant-card-actions {
   background-color: #fff !important;

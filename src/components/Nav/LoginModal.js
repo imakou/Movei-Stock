@@ -7,6 +7,7 @@ const TabPane = Tabs.TabPane;
 
 class LoginModal extends Component {
   state = { visible: false };
+
   showModal = () => {
     this.setState({
       visible: true

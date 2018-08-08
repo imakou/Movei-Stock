@@ -67,7 +67,7 @@ class LoginForm extends Component {
             Sign In
           </Button>
           <Divider>or</Divider>
-          <span className="sb sb-facebook w-100" onClick={this.FBLogin}>
+          <span className="sb sb-facebook w-100 PointerEffect" onClick={this.FBLogin}>
             Sign in with Facebook
           </span>
         </FormItem>
