@@ -42,7 +42,7 @@ export function fetch_profile(token) {
   };
 }
 
-export function member_logout(token) {
+export function member_logout() {
   return async dispatch => {
     localStorage.removeItem("MStoken");
     dispatch(member_logout_successful());

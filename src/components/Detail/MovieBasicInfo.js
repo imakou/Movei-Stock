@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Collapse, Icon } from "antd";
 import PropTypes from "prop-types";
 import numeral from "numeral";
@@ -62,6 +62,8 @@ const MovieBasicInfo = props => {
   );
 };
 
-MovieBasicInfo.propTypes = {};
+MovieBasicInfo.propTypes = {
+  data: PropTypes.object.isRequired
+};
 
 export default MovieBasicInfo;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Button } from "antd";
 import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
@@ -9,6 +10,12 @@ class MovieCard extends Component {
       <div className="col-6 col-sm-4 col-md-3 mb-4">
         <div className="border shadow-sm bg-white">
           <div className="OverFlowHidden">
+            <Button
+              className="MovieCardFavBtn bg-danger"
+              type="primary"
+              shape="circle"
+              icon="heart-o"
+            />
             <Link to={`/movie/${data.id}`}>
               {data.poster_path ? (
                 <img

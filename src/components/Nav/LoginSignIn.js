@@ -76,7 +76,10 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {};
+LoginForm.propTypes = {
+  form: PropTypes.object,
+  fetch_facebook_token: PropTypes.func.isRequired
+};
 const WrappedNormalLoginForm = Form.create()(LoginForm);
 
 export default WrappedNormalLoginForm;

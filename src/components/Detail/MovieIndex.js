@@ -4,7 +4,7 @@ import * as Vibrant from "node-vibrant";
 import MovieContent from "./MovieContent";
 import MovieTrailers from "./MovieTrailers";
 import { shuffle } from "lodash";
-import { Rate } from "antd";
+import { Rate, Icon, Button } from "antd";
 import { getRate } from "../../_utils";
 
 class MovieIndex extends Component {
@@ -64,6 +64,15 @@ class MovieIndex extends Component {
                         allowHalf
                         value={getRate(currentMovie.vote_average)}
                       />
+                    </div>
+                    <div className="mb-3">
+                      <button
+                        type="button"
+                        size="small"
+                        className="btn btn-danger btn-sm"
+                      >
+                        <Icon type="plus" /> Favorite
+                      </button>
                     </div>
                     <p>{currentMovie.overview}</p>
                   </div>

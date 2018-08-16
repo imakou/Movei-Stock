@@ -218,6 +218,13 @@ body {
 .hoverPoint {
   cursor: pointer; }
 
+.MovieCardFavBtn {
+  position: absolute !important;
+  right: 25px;
+  top: 8px;
+  z-index: 105;
+  border: 1.5px solid white !important; }
+
 .avtarBG {
   width: 50px;
   height: 50px; }
