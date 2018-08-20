@@ -6,23 +6,30 @@ import LoginSignUp from "./LoginSignUp";
 const TabPane = Tabs.TabPane;
 
 class LoginModal extends Component {
-  state = { visible: false };
+  state = { visible: this.props.showLoginModal };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.showLoginModal !== prevState.visible) {
+      return { visible: nextProps.showLoginModal };
+    } else {
+      return null;
+    }
+  }
 
   showModal = () => {
-    this.setState({
-      visible: true
-    });
+    this.props.update_loging_request(true);
   };
-  handleOk = e => {
-    this.setState({
-      visible: false
-    });
-  };
-  handleCancel = e => {
+
+  handleOk = () => {
     this.setState({
       visible: false
     });
   };
+
+  handleCancel = () => {
+    this.props.update_loging_request(false);
+  };
+
   render() {
     return (
       <div>

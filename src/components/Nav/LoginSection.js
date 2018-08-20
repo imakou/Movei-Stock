@@ -32,12 +32,20 @@ class LoginSection extends Component {
       </div>
     ) : (
       <div className="ml-4 d-flex align-items-center">
-        <LoginModal fetch_facebook_token={this.props.fetch_facebook_token} />
+        <LoginModal
+          showLoginModal={this.props.showLoginModal}
+          update_loging_request={this.props.update_loging_request}
+          fetch_facebook_token={this.props.fetch_facebook_token}
+        />
       </div>
     );
   }
 }
 
-LoginSection.propTypes = {};
+LoginSection.propTypes = {
+  update_loging_request: PropTypes.func,
+  fetch_facebook_token: PropTypes.func,
+  showLoginModal: PropTypes.bool
+};
 
 export default LoginSection;

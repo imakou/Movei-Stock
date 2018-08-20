@@ -11,7 +11,13 @@ const MovieBlock = props => {
       </div>
     ) : (
       data.map(e => {
-        return <MovieCard key={e.id} data={e} />;
+        return (
+          <MovieCard
+            add_movie_to_favorite={props.add_movie_to_favorite}
+            key={e.id}
+            data={e}
+          />
+        );
       })
     );
 

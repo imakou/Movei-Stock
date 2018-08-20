@@ -4,6 +4,10 @@ import { Button } from "antd";
 import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
+  addToFavorite = movie_id => {
+    console.log("Hello movie_id", movie_id); // log is here
+    this.props.add_movie_to_favorite(movie_id);
+  };
   render() {
     const { data } = this.props;
     return (
@@ -15,6 +19,7 @@ class MovieCard extends Component {
               type="primary"
               shape="circle"
               icon="heart-o"
+              onClick={() => this.addToFavorite(data.id)}
             />
             <Link to={`/movie/${data.id}`}>
               {data.poster_path ? (

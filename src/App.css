@@ -203,6 +203,8 @@ body {
 
 .OverFlowHidden {
   overflow: hidden; }
+  .OverFlowHidden:hover > .MovieCardFavBtn {
+    opacity: 1; }
 
 .MovieTitleHeader {
   text-overflow: ellipsis;
@@ -219,11 +221,13 @@ body {
   cursor: pointer; }
 
 .MovieCardFavBtn {
+  opacity: 0;
   position: absolute !important;
   right: 25px;
   top: 8px;
   z-index: 105;
-  border: 1.5px solid white !important; }
+  border: 1.5px solid white !important;
+  transition: all 2.5s; }
 
 .avtarBG {
   width: 50px;

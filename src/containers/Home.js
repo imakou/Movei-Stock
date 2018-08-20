@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import MovieCards from "../components/MovieCard/MovieCards";
-import * as actions from "../actions/MovieActions";
+import * as MovieActions from "../actions/MovieActions";
+import * as MemberActions from "../actions/MemberActions";
 import { connect } from "react-redux";
 import HomeJumbotorn from "../components/Home/HomeJumbotorn";
 
@@ -22,13 +23,16 @@ class Home extends Component {
         <MovieCards
           popMovies={this.props.popMovies}
           nowPlayingMovies={this.props.nowPlayingMovies}
+          add_movie_to_favorite={this.props.add_movie_to_favorite}
         />
       </div>
     );
   }
 }
 
-Home.propTypes = {};
+Home.propTypes = {
+  add_movie_to_favorite: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {
@@ -40,13 +44,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetch_pop_movies: () => {
-      dispatch(actions.fetch_pop_movies());
+      dispatch(MovieActions.fetch_pop_movies());
     },
     fetch_now_playing_movies: () => {
-      dispatch(actions.fetch_now_playing_movies());
+      dispatch(MovieActions.fetch_now_playing_movies());
     },
     search_movies: keyWord => {
-      dispatch(actions.search_movies(keyWord));
+      dispatch(MovieActions.search_movies(keyWord));
+    },
+    add_movie_to_favorite: movie_id => {
+      dispatch(MemberActions.add_movie_to_favorite(movie_id));
     }
   };
 };

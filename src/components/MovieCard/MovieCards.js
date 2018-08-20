@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Tabs, Badge, Card, Icon, Avatar, Spin } from "antd";
 import MovieBlock from "./MovieBlock";
 
-const { Meta } = Card;
 const TabPane = Tabs.TabPane;
 
 class MovieCards extends Component {
@@ -15,10 +14,16 @@ class MovieCards extends Component {
             <div className="col-12">
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Now Playing" key="1">
-                  <MovieBlock data={this.props.nowPlayingMovies} />
+                  <MovieBlock
+                    add_movie_to_favorite={this.props.add_movie_to_favorite}
+                    data={this.props.nowPlayingMovies}
+                  />
                 </TabPane>
                 <TabPane tab="Popular" key="2">
-                  <MovieBlock data={this.props.popMovies} />
+                  <MovieBlock
+                    add_movie_to_favorite={this.props.add_movie_to_favorite}
+                    data={this.props.popMovies}
+                  />
                 </TabPane>
               </Tabs>
             </div>
@@ -141,6 +146,7 @@ class MovieCards extends Component {
 
 MovieCards.propTypes = {
   fetch_pop_movies: PropTypes.func,
+  add_movie_to_favorite: PropTypes.func,
   popMovies: PropTypes.array
 };
 

@@ -45,6 +45,8 @@ class Nav extends Component {
                 </button>
               </div>
               <LoginSection
+                showLoginModal={this.props.showLoginModal}
+                update_loging_request={this.props.update_loging_request}
                 member_logout={this.props.member_logout}
                 profile={this.props.profile}
                 fetch_facebook_token={this.props.fetch_facebook_token}
@@ -64,13 +66,15 @@ Nav.propTypes = {
   empty_search_movies: PropTypes.func,
   update_keyword: PropTypes.func,
   check_token: PropTypes.func,
-  member_logout: PropTypes.func
+  member_logout: PropTypes.func,
+  showLoginModal: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
     searchedMovies: state.movies.searchedMovies,
-    profile: state.member.profile
+    profile: state.member.profile,
+    showLoginModal: state.member.loginRequired
   };
 };
 
@@ -93,6 +97,9 @@ const mapDispatchToProps = dispatch => {
     },
     member_logout: () => {
       dispatch(MemberActions.member_logout());
+    },
+    update_loging_request: loginStatus => {
+      dispatch(MemberActions.update_loging_request(loginStatus));
     }
   };
 };
