@@ -285,6 +285,13 @@ body {
 .PointerEffect {
   cursor: pointer;
 }
+.LoginSectionIcon {
+  img {
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #fff;
+  }
+}
 // Overwrite ANTD's style
 .ant-card-actions {
   background-color: #fff !important;
