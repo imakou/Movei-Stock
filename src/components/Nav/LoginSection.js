@@ -25,9 +25,9 @@ class LoginSection extends Component {
     const { profile } = this.props;
     const profileIcon = profile ? { src: profile.cover } : { icon: "user" };
     return profile ? (
-      <div className="ml-4 d-flex align-items-center">
+      <div className="ml-4 d-flex align-items-center LoginSectionIcon">
         <Dropdown overlay={content} placement="bottomCenter">
-          <Avatar size="large" {...profileIcon} />
+          <Avatar size={45} {...profileIcon} />
         </Dropdown>
       </div>
     ) : (
