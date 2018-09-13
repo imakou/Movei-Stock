@@ -15,7 +15,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <ScrollToTop>
           <div className="App">
             <header>
