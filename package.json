@@ -43,6 +43,6 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "deploy": "npm run build && mv build/index.html build/200.html && surge build",
     "predeploy": "npm run build",
-    "gh-deploy": "gh-pages -d build"
+    "gh-deploy": "mv build dist && git subtree push --prefix dist origin gh-pages"
   }
 }
