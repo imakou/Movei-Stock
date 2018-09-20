@@ -2,11 +2,13 @@
   "name": "movie",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://imakou.github.io/Movie-Stock",
   "dependencies": {
     "antd": "^3.5.4",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "fb": "^2.0.0",
+    "gh-pages": "^1.2.0",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "node-sass-chokidar": "^1.3.0",
@@ -39,6 +41,8 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "deploy": "npm run build && mv build/index.html build/200.html && surge build"
+    "deploy": "npm run build && mv build/index.html build/200.html && surge build",
+    "predeploy": "npm run build",
+    "gh-deploy": "mv build dist && git subtree push --prefix dist origin gh-pages"
   }
 }
