@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { List, Card } from "antd";
+import { List, Spin } from "antd";
 import PropTypes from "prop-types";
 import MemberFavorites from "./MemberFavorites";
 import MemberRecentViewed from "./MemberRecentViewed";
 import MemberComment from "./MemberComment";
-const { Meta } = Card;
 
 class MemberContent extends Component {
   render() {
@@ -12,9 +11,17 @@ class MemberContent extends Component {
       <div className="container">
         <div className="row pt-5 pb-5">
           <div className="col-md-9">
-            <MemberFavorites />
-            <MemberRecentViewed />
-            <MemberComment />
+            {this.props.favoriteList.length !== 0 ? (
+              <MemberFavorites
+                fetch_favorite_list_detail={this.props.fetch_favorite_list_detail}
+                favoriteListDetail={this.props.favoriteListDetail}
+                favoriteList={this.props.favoriteList}
+              />
+            ) : (
+              <Spin />
+            )}
+            {/* <MemberRecentViewed />
+            <MemberComment /> */}
           </div>
           <div className="col-md-3">
             <List
