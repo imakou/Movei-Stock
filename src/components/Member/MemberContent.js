@@ -11,17 +11,10 @@ class MemberContent extends Component {
       <div className="container">
         <div className="row pt-5 pb-5">
           <div className="col-md-9">
-            {this.props.favoriteList.length !== 0 ? (
-              <MemberFavorites
-                fetch_favorite_list_detail={this.props.fetch_favorite_list_detail}
-                favoriteListDetail={this.props.favoriteListDetail}
-                favoriteList={this.props.favoriteList}
-              />
-            ) : (
-              <Spin />
-            )}
-            {/* <MemberRecentViewed />
-            <MemberComment /> */}
+            <MemberFavorites
+              favoriteListDetail={this.props.favoriteListDetail}
+              delete_favorite_movie={this.props.delete_favorite_movie}
+            />
           </div>
           <div className="col-md-3">
             <List

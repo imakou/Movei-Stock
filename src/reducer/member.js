@@ -37,6 +37,11 @@ export const member = (state = initialState, action) => {
         ...state,
         favoriteList: action.FavoriteList
       };
+    case MEMBER_ACTIONS.DELETE_FAVORITE_MOVIE_SUCCESSFUL:
+      return {
+        ...state,
+        favoriteList: action.FavoriteList
+      };
     case MEMBER_ACTIONS.FETCH_FAVORITE_LIST_DETAIL_SUCCESSFUL:
       return {
         ...state,

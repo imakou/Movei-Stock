@@ -38,16 +38,14 @@ class MovieDetail extends Component {
 
   render() {
     const { currentMovie } = this.state;
-    const content = currentMovie ? (
-      <MovieIndex currentMovie={currentMovie} />
-    ) : (
-      <MovieDetailLoading />
-    );
+    const content = currentMovie ? <MovieIndex currentMovie={currentMovie} /> : <MovieDetailLoading />;
     return content;
   }
 }
 
-MovieDetail.propTypes = {};
+MovieDetail.propTypes = {
+  currentMovie: PropTypes.object
+};
 
 const mapStateToProps = state => {
   return {

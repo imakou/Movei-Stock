@@ -4,18 +4,14 @@ import { Button, Popconfirm, Tooltip, Card, Icon, Rate } from "antd";
 const { Meta } = Card;
 
 class MemberFavorites extends Component {
-  componentDidMount() {
-    const { favoriteList } = this.props;
-    this.props.fetch_favorite_list_detail(favoriteList);
-  }
-  handleDelete = () => {
-    console.log("Hello delete"); // log is here
+  handleDelete = movie_id => {
+    console.log("Hello delete", movie_id); // log is here
+    this.props.delete_favorite_movie(movie_id);
   };
   renderFavCard = () => {
     const { favoriteListDetail } = this.props;
-    console.log("Hello favoriteListDetail", favoriteListDetail); // log is here
-    const r = favoriteListDetail.map(movie => (
-      <div className="col-md-3 col-sm-12 mb-3">
+    const Cards = favoriteListDetail.map(movie => (
+      <div key={movie.id} className="col-md-3 col-sm-12 mb-3">
         <Card
           className="MovieCard"
           bodyStyle={{ padding: "10px" }}
@@ -31,11 +27,13 @@ class MemberFavorites extends Component {
             />
           }
           actions={[
-            <span>Detail</span>,
+            <span>
+              <a href={`/movie/${movie.id}`}> Detail</a>
+            </span>,
             <Popconfirm
               placement="top"
-              title={"Delete the move from your favorite list?"}
-              onConfirm={this.handleDelete}
+              title={"Delete the moive from your favorite list?"}
+              onConfirm={() => this.handleDelete(movie.id)}
               okText="Yes"
               cancelText="No"
             >
@@ -44,12 +42,13 @@ class MemberFavorites extends Component {
           ]}
         >
           <div className="d-flex justify-content-center">
-            <Rate allowHalf defaultValue={2.5} />
+            {/* <Rate allowHalf defaultValue={2.5} /> */}
+            <div className="MovieTitleHeader">{movie.original_title}</div>
           </div>
         </Card>
       </div>
     ));
-    return r;
+    return Cards;
   };
   render() {
     return (

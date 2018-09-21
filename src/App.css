@@ -140,7 +140,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 80%;
-  min-height: 50vh;
+  min-height: 38vh;
   color: white; }
 
 .AppDescription {
@@ -196,6 +196,9 @@ body {
   position: absolute;
   background-color: rgba(122, 122, 122, 0.432); }
 
+.MovieCard a:hover {
+  text-decoration: none; }
+
 .MovieCard:hover {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
   border-color: rgba(0, 0, 0, 0.09);
@@ -228,6 +231,9 @@ body {
   z-index: 105;
   border: 1.5px solid white !important;
   transition: all 2.5s; }
+
+.MovieCardFavBtnShow {
+  opacity: 1; }
 
 .avtarBG {
   width: 50px;

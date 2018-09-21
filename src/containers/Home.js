@@ -22,8 +22,10 @@ class Home extends Component {
         />
         <MovieCards
           popMovies={this.props.popMovies}
+          favoriteList={this.props.favoriteList}
           nowPlayingMovies={this.props.nowPlayingMovies}
           add_movie_to_favorite={this.props.add_movie_to_favorite}
+          delete_favorite_movie={this.props.delete_favorite_movie}
         />
       </div>
     );
@@ -31,13 +33,16 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  add_movie_to_favorite: PropTypes.func
+  add_movie_to_favorite: PropTypes.func,
+  favoriteList: PropTypes.array,
+  popMovies: PropTypes.array
 };
 
 const mapStateToProps = state => {
   return {
     popMovies: state.movies.popMovies,
-    nowPlayingMovies: state.movies.nowPlayingMovies
+    nowPlayingMovies: state.movies.nowPlayingMovies,
+    favoriteList: state.member.favoriteList
   };
 };
 
@@ -54,6 +59,9 @@ const mapDispatchToProps = dispatch => {
     },
     add_movie_to_favorite: movie_id => {
       dispatch(MemberActions.add_movie_to_favorite(movie_id));
+    },
+    delete_favorite_movie: movie_id => {
+      dispatch(MemberActions.delete_favorite_movie(movie_id));
     }
   };
 };
