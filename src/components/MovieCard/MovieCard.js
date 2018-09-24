@@ -9,9 +9,7 @@ class MovieCard extends Component {
   };
   render() {
     const { data, favoriteList } = this.props;
-    console.log("Hello favoriteList", favoriteList); // log is here
     const isFavorite = favoriteList.map(m => m.movie_id).indexOf(String(data.id)) !== -1;
-    console.log("Hello isFavorite", isFavorite); // log is here
     return (
       <div className="col-6 col-sm-4 col-md-3 mb-4">
         <div className="border shadow-sm bg-white">

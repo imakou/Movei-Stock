@@ -66,9 +66,9 @@ class MemberFavorites extends Component {
 }
 
 MemberFavorites.propTypes = {
-  favoriteList: PropTypes.array.isRequired,
+  favoriteList: PropTypes.array,
   favoriteListDetail: PropTypes.array,
-  fetch_favorite_list_detail: PropTypes.func.isRequired
+  fetch_favorite_list_detail: PropTypes.func
 };
 
 export default MemberFavorites;

@@ -8,9 +8,11 @@ import MemberContent from "../components/Member/MemberContent";
 
 class Member extends Component {
   state = {
-    favoriteListLength: this.props.favoriteList.length
+    favoriteListLength: 0
   };
   static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("Hello nextProps", nextProps.favoriteList.length); // log is here
+    console.log("Hello prevState", prevState); // log is here
     if (prevState.favoriteListLength !== nextProps.favoriteList.length) {
       nextProps.fetch_favorite_list_detail(nextProps.favoriteList);
       return { favoriteListLength: nextProps.favoriteList.length };
@@ -23,8 +25,9 @@ class Member extends Component {
   }
 
   render() {
-    console.log("Hello favoriteList", this.props.favoriteListDetail); // log is here
+    console.log("Hello favoriteList", this.props.favoriteList); // log is here
     const { favoriteListDetail } = this.props;
+    console.log("Hello favoriteListDetail", favoriteListDetail); // log is here
     const JumbotomMoive = favoriteListDetail[Math.floor(Math.random() * favoriteListDetail.length)];
     console.log("Hello JumbotomMoive", JumbotomMoive); // log is here
 

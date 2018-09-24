@@ -45,10 +45,11 @@ function fetch_favorite_list_successful(favoriteList) {
   };
 }
 
-function add_movie_to_favorite_successful(favoriteList, id, movie_id) {
-  const FavoriteListSet = new Set(favoriteList);
-  FavoriteListSet.add(movie_id);
-  const updatedFavoriteList = Array.from(FavoriteListSet);
+function add_movie_to_favorite_successful(favoriteList, FavObj) {
+  // const FavoriteListSet = new Set(favoriteList);
+  // FavoriteListSet.add(FavObj.movie_id);
+  const isExist = favoriteList.some(m => m.movie_id === FavObj.movie_id);
+  const updatedFavoriteList = isExist ? [...favoriteList] : [...favoriteList, FavObj];
   return {
     type: MEMBER_ACTIONS.ADD_MOVIE_TO_FAVORITE_SUCCESSFUL,
     updatedFavoriteList
@@ -79,8 +80,6 @@ function fetch_favorite_list_detail_successful(resolvedMovies) {
 
 function delete_favorite_movie_successful(favoriteList, movie_id) {
   const FavoriteList = favoriteList.filter(e => String(e.movie_id) !== movie_id);
-  console.log("Hello favoriteList", favoriteList); // log is here
-  console.log("Hello FavoriteList", FavoriteList); // log is here
   return {
     type: MEMBER_ACTIONS.DELETE_FAVORITE_MOVIE_SUCCESSFUL,
     FavoriteList
@@ -151,8 +150,8 @@ export function add_movie_to_favorite(movie_id) {
       const favoriteList = getState().member.favoriteList;
       const isNotExist = favoriteList.indexOf(String(movie_id)) === -1;
       if (token && isNotExist) {
-        const { id, movie_id } = await AxiosAuth.post(`/favorite`, { movie_id: String(movie_id) }, headers);
-        dispatch(add_movie_to_favorite_successful(favoriteList, { FavID: id, movie_id }));
+        const { id } = await AxiosAuth.post(`/favorite`, { movie_id: String(movie_id) }, headers);
+        dispatch(add_movie_to_favorite_successful(favoriteList, { id, movie_id: String(movie_id) }));
       } else {
         dispatch(update_loging_request(true));
       }
