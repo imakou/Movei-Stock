@@ -11,6 +11,7 @@ An APP provides movies' information as a side-project based on React and Redux. 
 - Mobile devices friendly
 - Search movies
 - Now Playing / Popular
+- Mobile devices supported (RWD)
 - Movie's detail
 - Basic Info
   - Media
@@ -19,7 +20,6 @@ An APP provides movies' information as a side-project based on React and Redux. 
     - Images
     - Review
   - Casts
-- Mobile devices supported (RWD)
 - Members' features
   - Add Favorite
   - Real-time sharing
