@@ -4,7 +4,7 @@ An APP provides movies' information as a side-project based on React and Redux. 
 
 ![screen shot 2018-08-19 at 11 43 41 pm](https://user-images.githubusercontent.com/1507950/44319450-e2b56600-a409-11e8-96b5-281d870c5a6e.png)
 
-📺 [Online Demo](http://movie-stock.surge.sh/)
+📺 [Online Demo](https://movie.allenkou.info/)
 
 ## Features:
 
@@ -20,12 +20,15 @@ An APP provides movies' information as a side-project based on React and Redux. 
     - Review
   - Casts
 - Mobile devices supported (RWD)
+- Members' features
+  - Add Favorite
+  - Real-time sharing
 
 ## TODOs
 
 - [ ] Refactor redux middleware as Redux-Saga
 - [ ] Actions' testing
-- [ ] Members' features
+- [x] Members' features
 - [x] App's Logo
 
 ## Resource:
