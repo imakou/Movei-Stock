@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Icon, Spin } from "antd";
 import { Link } from "react-router-dom";
+import FavoriteBtnHOC from "../../HOC/FavoriteBtnHOC";
+import FavoriteIcon from "../common/FavoriteIcon";
 
 class HomeJumbotorn extends Component {
   componentDidMount() {
     this.props.fetch_now_playing_movies();
   }
   renderHomeJumbotorn = () => {
-    console.log("Hello this.props", this.props); // log is here
     const { nowPlayingMovies } = this.props;
     if (nowPlayingMovies.length === 0) {
       return (
@@ -21,6 +22,8 @@ class HomeJumbotorn extends Component {
       const backdrop_path = currentMovie.backdrop_path
         ? `https://image.tmdb.org/t/p/w1400_and_h450_face${currentMovie.backdrop_path}`
         : "https://fakeimg.pl/1400x450/eee/333333,255/?text=No+Image&font=roboto";
+      const FavBtnHoc = FavoriteBtnHOC(FavoriteIcon);
+
       return (
         <section
           style={{
@@ -38,13 +41,12 @@ class HomeJumbotorn extends Component {
                 <div className="col-sm-12 col-md-5 pb-5 d-flex align-items-end justify-content-center">
                   <div className="row">
                     <Link to={`/movie/${currentMovie.id}`}>
-                      <button type="button" className="ml-3 btn btn-light">
-                        <Icon className="mr-1" type="search" />Detail
+                      <button type="button" className="ml-3 mr-3 btn btn-light">
+                        <Icon className="mr-1" type="search" />
+                        Detail
                       </button>
                     </Link>
-                    <button type="button" className="ml-3 btn btn-danger">
-                      <Icon className="mr-1" type="plus" /> Favorite
-                    </button>
+                    {<FavBtnHoc movie_id={currentMovie.id} />}
                   </div>
                 </div>
               </div>

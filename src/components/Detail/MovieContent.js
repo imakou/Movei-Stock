@@ -41,6 +41,8 @@ class MovieContent extends Component {
   }
 }
 
-MovieContent.propTypes = {};
+MovieContent.propTypes = {
+  currentMovie: PropTypes.object
+};
 
 export default MovieContent;

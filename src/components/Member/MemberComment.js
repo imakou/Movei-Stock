@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { List, Button, Tooltip, Card, Icon, Rate } from "antd";
+import { Button, Tooltip, Card } from "antd";
 import TextTruncate from "react-text-truncate";
 const { Meta } = Card;
 
@@ -33,7 +32,7 @@ class MemberComment extends Component {
                     line={2}
                     truncateText="... "
                     text="Curious which components explicitly require jQuery, our JS, and Popper.js? Click the show components link below. If you’re at all unsure about the general page structure, keep reading for an example page template."
-                    textTruncateChild={<a href="#">Read on</a>}
+                    textTruncateChild={<span>Read on</span>}
                   />
                 </div>
               </div>
@@ -73,7 +72,5 @@ class MemberComment extends Component {
     );
   }
 }
-
-MemberComment.propTypes = {};
 
 export default MemberComment;

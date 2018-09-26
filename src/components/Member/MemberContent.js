@@ -1,34 +1,16 @@
 import React, { Component } from "react";
-import { List, Card } from "antd";
 import PropTypes from "prop-types";
 import MemberFavorites from "./MemberFavorites";
-import MemberRecentViewed from "./MemberRecentViewed";
-import MemberComment from "./MemberComment";
-const { Meta } = Card;
 
 class MemberContent extends Component {
   render() {
     return (
       <div className="container">
         <div className="row pt-5 pb-5">
-          <div className="col-md-9">
-            <MemberFavorites />
-            <MemberRecentViewed />
-            <MemberComment />
-          </div>
-          <div className="col-md-3">
-            <List
-              header={<div>Header</div>}
-              footer={<div>Footer</div>}
-              bordered
-              dataSource={[
-                "Racing car sprays burning fuel into crowd.",
-                "Japanese princess to wed commoner.",
-                "Australian walks 100km after outback crash.",
-                "Man charged over missing wedding girl.",
-                "Los Angeles battles huge wildfires."
-              ]}
-              renderItem={item => <List.Item>{item}</List.Item>}
+          <div className="col-md-12">
+            <MemberFavorites
+              favoriteListDetail={this.props.favoriteListDetail}
+              delete_favorite_movie={this.props.delete_favorite_movie}
             />
           </div>
         </div>
@@ -37,6 +19,9 @@ class MemberContent extends Component {
   }
 }
 
-MemberContent.propTypes = {};
+MemberContent.propTypes = {
+  favoriteListDetail: PropTypes.func.isRequired,
+  delete_favorite_movie: PropTypes.func.isRequired
+};
 
 export default MemberContent;

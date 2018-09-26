@@ -9,7 +9,7 @@ class SearchResults extends Component {
   renderMovies = () => {
     const { searchedMovies } = this.props;
     if (searchedMovies.length !== 0) {
-      return searchedMovies.map(e => <MovieCard key={e.id} data={e} />);
+      return searchedMovies.map(e => <MovieCard favoriteList={this.props.favoriteList} key={e.id} data={e} />);
     } else {
       return null;
     }
@@ -20,20 +20,17 @@ class SearchResults extends Component {
     const { searchedMoviesTotalPage } = this.props;
 
     return curPage === searchedMoviesTotalPage || !searchedMoviesTotalPage ? null : (
-      <button
-        type="button"
-        onClick={this.fetchMoreMovies}
-        className="btn btn-primary btnLoadMoreMovie"
-      >
+      <button type="button" onClick={this.fetchMoreMovies} className="btn btn-primary btnLoadMoreMovie">
         Load More
       </button>
     );
   };
 
   fetchMoreMovies = () => {
+    const curPage = this.state.curPage + 1;
     this.setState(
       {
-        curPage: (this.state.curPage += 1)
+        curPage
       },
       this.props.fetch_more_movies(this.props.keyWord, this.state.curPage)
     );

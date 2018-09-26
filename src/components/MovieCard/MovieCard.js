@@ -5,36 +5,37 @@ import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
   addToFavorite = movie_id => {
-    console.log("Hello movie_id", movie_id); // log is here
     this.props.add_movie_to_favorite(movie_id);
   };
+  deleteFromFavorite = movie_id => {
+    this.props.delete_favorite_movie(movie_id);
+  };
   render() {
-    const { data } = this.props;
+    const { data, favoriteList } = this.props;
+    const isFavorite = favoriteList.map(m => m.movie_id).indexOf(String(data.id)) !== -1;
     return (
       <div className="col-6 col-sm-4 col-md-3 mb-4">
         <div className="border shadow-sm bg-white">
           <div className="OverFlowHidden">
             <Button
-              className="MovieCardFavBtn bg-danger"
+              className={`MovieCardFavBtn bg-danger ${isFavorite && "MovieCardFavBtnShow"}`}
               type="primary"
               shape="circle"
-              icon="heart-o"
-              onClick={() => this.addToFavorite(data.id)}
+              icon={`${isFavorite ? "heart" : "heart-o"}`}
+              onClick={isFavorite ? () => this.deleteFromFavorite(data.id) : () => this.addToFavorite(data.id)}
             />
             <Link to={`/movie/${data.id}`}>
               {data.poster_path ? (
                 <img
                   className="img-fluid imgScale"
-                  src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${
-                    data.poster_path
-                  }`}
+                  src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.poster_path}`}
                   alt={data.title}
                 />
               ) : (
                 <img
                   className="img-fluid imgScale"
                   src="https://fakeimg.pl/260x380/eee/333333,255/?text=No+Image&font=roboto"
-                  alt="No Image"
+                  alt=""
                 />
               )}
             </Link>
@@ -47,9 +48,7 @@ class MovieCard extends Component {
               </h6>
             </div>
             <div className="col-2 p-0">
-              <span className="badge badge-pill badge-success font-weight-light">
-                {data.vote_average}
-              </span>
+              <span className="badge badge-pill badge-success font-weight-light">{data.vote_average}</span>
             </div>
           </div>
         </div>

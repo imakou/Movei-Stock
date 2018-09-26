@@ -1,60 +1,114 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import * as Vibrant from "node-vibrant";
+import { connect } from "react-redux";
+import { Spin } from "antd";
+import * as MemberActions from "../actions/MemberActions";
 import MemberContent from "../components/Member/MemberContent";
 
 class Member extends Component {
+  state = {
+    favoriteListLength: 0
+  };
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("Hello nextProps", nextProps.favoriteList.length); // log is here
+    console.log("Hello prevState", prevState); // log is here
+    if (prevState.favoriteListLength !== nextProps.favoriteList.length) {
+      nextProps.fetch_favorite_list_detail(nextProps.favoriteList);
+      return { favoriteListLength: nextProps.favoriteList.length };
+    }
+    return null;
+  }
+
+  componentDidMount() {
+    this.props.fetch_favorite_list();
+  }
+
   render() {
-    Vibrant.from(
-      "https://image.tmdb.org/t/p/w1400_and_h450_face/kqoBtMmiycbbhGLXGkKhL8SdaWB.jpg"
-    )
-      .getSwatches()
-      .then(palette => console.log(palette.DarkVibrant.getRgb()));
+    console.log("Hello favoriteList", this.props.favoriteList); // log is here
+    const { favoriteListDetail, profile } = this.props;
+    console.log("Hello favoriteListDetail", favoriteListDetail); // log is here
+    const JumbotomMoive = favoriteListDetail[Math.floor(Math.random() * favoriteListDetail.length)];
+    console.log("Hello JumbotomMoive", JumbotomMoive); // log is here
+
     return (
       <React.Fragment>
-        <section
-          style={{
-            backgroundImage:
-              'url("https://image.tmdb.org/t/p/w1400_and_h450_face/kqoBtMmiycbbhGLXGkKhL8SdaWB.jpg")'
-          }}
-          className="MemberJumbotron d-flex align-items-end"
-        >
-          {/* <div
-            className="w-100 MovieDetailJumbotronMask"
-            style={{ backgroundColor: "rgba(113, 8, 9, 0.8)" }}
-          /> */}
-          <div className="MemberJumbotronInfo w-100">
-            <div className="container MovieDetailJumbotron">
-              <div className="row">
-                <div className="col-md-12">
-                  <div>
-                    <h1>Imakou</h1>
-                    <div className="row no-gutters MemberJumbotronDesc d-flex justify-content-start">
-                      <div className="">
-                        <h6>
-                          <small>Member Type: Standard</small>
-                        </h6>
-                      </div>
-                      <div className="">
-                        <h6>
-                          <small>Collection: 5</small>
-                        </h6>
+        {favoriteListDetail.length !== 0 ? (
+          <React.Fragment>
+            <section
+              style={{
+                backgroundImage: `url("https://image.tmdb.org/t/p/w1400_and_h450_face/${JumbotomMoive.backdrop_path}")`
+              }}
+              className="MemberJumbotron d-flex align-items-end"
+            >
+              <div className="MemberJumbotronInfo w-100">
+                <div className="container MovieDetailJumbotron">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div>
+                        <h2 className="mt-2">{profile.nickname}</h2>
+                        <div className="row no-gutters MemberJumbotronDesc d-flex justify-content-start">
+                          <div>
+                            <h6>
+                              <small>Member Type: Standard</small>
+                            </h6>
+                          </div>
+                          <div className="">
+                            <h6>
+                              <small>Collection: {favoriteListDetail.length}</small>
+                            </h6>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
+            <section>
+              <MemberContent
+                favoriteListDetail={this.props.favoriteListDetail}
+                delete_favorite_movie={this.props.delete_favorite_movie}
+              />
+            </section>
+          </React.Fragment>
+        ) : (
+          <div className="d-flex justify-content-center w-100 mt-5 mb-5">
+            <Spin size="large" />
           </div>
-        </section>
-        <section>
-          <MemberContent />
-        </section>
+        )}
       </React.Fragment>
     );
   }
 }
 
-Member.propTypes = {};
+Member.propTypes = {
+  favoriteListDetail: PropTypes.array,
+  profile: PropTypes.object
+};
 
-export default Member;
+const mapStateToProps = state => {
+  return {
+    favoriteList: state.member.favoriteList,
+    profile: state.member.profile,
+    favoriteListDetail: state.member.favoriteListDetail
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetch_favorite_list: () => {
+      dispatch(MemberActions.fetch_favorite_list());
+    },
+    fetch_favorite_list_detail: favList => {
+      dispatch(MemberActions.fetch_favorite_list_detail(favList));
+    },
+    delete_favorite_movie: movieId => {
+      dispatch(MemberActions.delete_favorite_movie(movieId));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Member);

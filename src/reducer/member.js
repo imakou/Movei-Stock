@@ -2,7 +2,9 @@ import { MEMBER_ACTIONS } from "../actions/MemberActions";
 
 const initialState = {
   profile: undefined,
-  loginRequired: false
+  loginRequired: false,
+  favoriteList: [],
+  favoriteListDetail: []
 };
 
 /*
@@ -24,6 +26,26 @@ export const member = (state = initialState, action) => {
       return {
         ...state,
         loginRequired: action.loginStatus
+      };
+    case MEMBER_ACTIONS.ADD_MOVIE_TO_FAVORITE_SUCCESSFUL:
+      return {
+        ...state,
+        favoriteList: action.updatedFavoriteList
+      };
+    case MEMBER_ACTIONS.FETCH_FAVORITE_LIST_SUCCESSFUL:
+      return {
+        ...state,
+        favoriteList: action.FavoriteList
+      };
+    case MEMBER_ACTIONS.DELETE_FAVORITE_MOVIE_SUCCESSFUL:
+      return {
+        ...state,
+        favoriteList: action.FavoriteList
+      };
+    case MEMBER_ACTIONS.FETCH_FAVORITE_LIST_DETAIL_SUCCESSFUL:
+      return {
+        ...state,
+        favoriteListDetail: action.favoriteListDetail
       };
     case MEMBER_ACTIONS.MEMBER_LOGOUT_SUCCESSFUL:
       return {
