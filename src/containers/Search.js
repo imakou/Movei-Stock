@@ -46,6 +46,7 @@ class Search extends Component {
           <SearchResults
             keyWord={this.props.keyWord}
             fetch_more_movies={this.props.fetch_more_movies}
+            favoriteList={this.props.favoriteList}
             searchedMovies={this.props.searchedMovies}
             searchedMoviesTotalPage={this.props.searchedMoviesTotalPage}
           />
@@ -57,14 +58,21 @@ class Search extends Component {
 
 Search.propTypes = {
   searchedMovies: PropTypes.array,
-  search_movies: PropTypes.func
+  favoriteList: PropTypes.array,
+  searchedMoviesTotalPage: PropTypes.number,
+  keyWord: PropTypes.string,
+  search_movies: PropTypes.func,
+  update_keyword: PropTypes.func,
+  fetch_more_movies: PropTypes.func,
+  empty_search_movies: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
     searchedMovies: state.movies.searchedMovies,
     searchedMoviesTotalPage: state.movies.searchedMoviesTotalPage,
-    keyWord: state.movies.keyWord
+    keyWord: state.movies.keyWord,
+    favoriteList: state.member.favoriteList
   };
 };
 

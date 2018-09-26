@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Icon } from "antd";
-import PropTypes from "prop-types";
 
 class Footer extends Component {
   render() {
@@ -13,13 +12,13 @@ class Footer extends Component {
                 <span className="d-block mb-2">© 2018 Allen Kou.</span>
                 <span className="d-block">
                   API BY{" "}
-                  <a target="_blank" href="https://www.themoviedb.org/">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.themoviedb.org/">
                     Themoviedb
                   </a>{" "}
                   👍👍👍
                 </span>
                 <span className="d-block mt-2">
-                  <a target="_blank" href="https://github.com/imakou/Movei-Stock">
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/imakou/Movei-Stock">
                     <Icon style={{ fontSize: "22px" }} type="github" />
                   </a>
                 </span>
@@ -31,7 +30,5 @@ class Footer extends Component {
     );
   }
 }
-
-Footer.propTypes = {};
 
 export default Footer;

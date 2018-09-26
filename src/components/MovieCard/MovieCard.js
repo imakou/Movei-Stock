@@ -7,6 +7,9 @@ class MovieCard extends Component {
   addToFavorite = movie_id => {
     this.props.add_movie_to_favorite(movie_id);
   };
+  deleteFromFavorite = movie_id => {
+    this.props.delete_favorite_movie(movie_id);
+  };
   render() {
     const { data, favoriteList } = this.props;
     const isFavorite = favoriteList.map(m => m.movie_id).indexOf(String(data.id)) !== -1;
@@ -19,7 +22,7 @@ class MovieCard extends Component {
               type="primary"
               shape="circle"
               icon={`${isFavorite ? "heart" : "heart-o"}`}
-              onClick={() => this.addToFavorite(data.id)}
+              onClick={isFavorite ? () => this.deleteFromFavorite(data.id) : () => this.addToFavorite(data.id)}
             />
             <Link to={`/movie/${data.id}`}>
               {data.poster_path ? (
@@ -32,7 +35,7 @@ class MovieCard extends Component {
                 <img
                   className="img-fluid imgScale"
                   src="https://fakeimg.pl/260x380/eee/333333,255/?text=No+Image&font=roboto"
-                  alt="No Image"
+                  alt=""
                 />
               )}
             </Link>

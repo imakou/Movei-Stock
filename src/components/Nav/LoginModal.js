@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Modal, Tabs } from "antd";
 import LoginSignIn from "./LoginSignIn";
-import LoginSignUp from "./LoginSignUp";
+// import LoginSignUp from "./LoginSignUp";
 const TabPane = Tabs.TabPane;
 
 class LoginModal extends Component {
@@ -33,22 +33,16 @@ class LoginModal extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.showModal}>Login</Button>
-        <Modal
-          footer={null}
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          width={360}
-        >
+        <Button onClick={this.showModal}>Sign In</Button>
+        <Modal footer={null} visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel} width={360}>
           <div id="LoginForm">
             <Tabs defaultActiveKey="1">
               <TabPane tab="Sign In" key="1">
                 <LoginSignIn fetch_facebook_token={this.props.fetch_facebook_token} />
               </TabPane>
-              <TabPane tab="Create One" key="2">
+              {/* <TabPane tab="Create One" key="2">
                 <LoginSignUp />
-              </TabPane>
+              </TabPane> */}
             </Tabs>
           </div>
         </Modal>

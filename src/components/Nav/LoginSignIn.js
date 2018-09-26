@@ -38,10 +38,7 @@ class LoginForm extends Component {
           {getFieldDecorator("userName", {
             rules: [{ required: true, message: "Please input your username!" }]
           })(
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Username"
-            />
+            <Input prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />} placeholder="Username" disabled />
           )}
         </FormItem>
         <FormItem>
@@ -52,6 +49,7 @@ class LoginForm extends Component {
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
               placeholder="Password"
+              disabled
             />
           )}
         </FormItem>
@@ -59,11 +57,11 @@ class LoginForm extends Component {
           {getFieldDecorator("remember", {
             valuePropName: "checked",
             initialValue: true
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
+          })(<Checkbox disabled>Remember me</Checkbox>)}
+          {/* <a className="login-form-forgot" href="">
             Forgot password
-          </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          </a> */}
+          <Button disabled type="primary" htmlType="submit" className="login-form-button">
             Sign In
           </Button>
           <Divider>or</Divider>

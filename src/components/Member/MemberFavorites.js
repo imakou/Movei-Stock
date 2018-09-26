@@ -1,30 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Popconfirm, Tooltip, Card, Icon, Rate } from "antd";
-const { Meta } = Card;
+import { Button, Popconfirm, Tooltip, Card } from "antd";
 
 class MemberFavorites extends Component {
   handleDelete = movie_id => {
-    console.log("Hello delete", movie_id); // log is here
     this.props.delete_favorite_movie(movie_id);
   };
   renderFavCard = () => {
     const { favoriteListDetail } = this.props;
     const Cards = favoriteListDetail.map(movie => (
-      <div key={movie.id} className="col-md-3 col-sm-12 mb-3">
+      <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
         <Card
           className="MovieCard"
           bodyStyle={{ padding: "10px" }}
           cover={
-            <img
-              className="img-fluid imgScale"
-              alt="example"
-              src={
-                movie.backdrop_path
-                  ? `https://image.tmdb.org/t/p/w300${movie.backdrop_path}`
-                  : "https://fakeimg.pl/300x169/eee/333333,255/?text=No+Image&font=roboto"
-              }
-            />
+            <a href={`/movie/${movie.id}`}>
+              <img
+                className="img-fluid imgScale"
+                alt="example"
+                src={
+                  movie.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w300${movie.backdrop_path}`
+                    : "https://fakeimg.pl/300x169/eee/333333,255/?text=No+Image&font=roboto"
+                }
+              />
+            </a>
           }
           actions={[
             <span>
@@ -68,7 +68,8 @@ class MemberFavorites extends Component {
 MemberFavorites.propTypes = {
   favoriteList: PropTypes.array,
   favoriteListDetail: PropTypes.array,
-  fetch_favorite_list_detail: PropTypes.func
+  fetch_favorite_list_detail: PropTypes.func,
+  delete_favorite_movie: PropTypes.func
 };
 
 export default MemberFavorites;

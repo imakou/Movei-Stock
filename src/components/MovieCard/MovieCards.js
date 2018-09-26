@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Tabs, Badge, Card, Icon, Avatar, Spin } from "antd";
+import { Tabs } from "antd";
 import MovieBlock from "./MovieBlock";
 
 const TabPane = Tabs.TabPane;

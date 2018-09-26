@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "antd";
 
 const MovieCasts = props => {
   const { casts } = props;
@@ -19,7 +18,7 @@ const MovieCasts = props => {
                 <img
                   className="img-fluid imgScale rounded-circle"
                   src="https://fakeimg.pl/600x600/eee/333333,255/?text=No+Image&font=roboto"
-                  alt="No Image"
+                  alt="Not available"
                 />
               )}
             </div>

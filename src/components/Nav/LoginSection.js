@@ -8,17 +8,12 @@ class LoginSection extends Component {
     const content = (
       <Menu style={{ width: "150px" }}>
         <Menu.Item key="1">
-          <Icon type="user" /> Account
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="2">
           <Icon type="info-circle-o" />
           <span onClick={() => this.props.history.push(`/member`)}> Summary</span>
         </Menu.Item>
         <Menu.Divider />
-        <Menu.Item key="3">
-          <Icon type="poweroff" />{" "}
-          <span onClick={this.props.member_logout}> Log Out</span>
+        <Menu.Item key="2">
+          <Icon type="poweroff" /> <span onClick={this.props.member_logout}> Log Out</span>
         </Menu.Item>
       </Menu>
     );

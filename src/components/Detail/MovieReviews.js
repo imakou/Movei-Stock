@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Tabs, Badge, Card, Icon, Avatar } from "antd";
+import React from "react";
+import { Card } from "antd";
 import { RandomBGC } from "../../_utils";
 const { Meta } = Card;
 

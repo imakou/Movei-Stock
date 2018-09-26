@@ -14,7 +14,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <HomeJumbotorn
           fetch_now_playing_movies={this.props.fetch_now_playing_movies}
           nowPlayingMovies={this.props.nowPlayingMovies}
@@ -27,7 +27,7 @@ class Home extends Component {
           add_movie_to_favorite={this.props.add_movie_to_favorite}
           delete_favorite_movie={this.props.delete_favorite_movie}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

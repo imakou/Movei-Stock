@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Spin } from "antd";
 
 class MovieDetailLoading extends Component {
@@ -7,10 +6,7 @@ class MovieDetailLoading extends Component {
     return (
       <React.Fragment>
         <section className="AppJumbotron d-flex align-items-stretch position-relative">
-          <div
-            className="w-100 MovieDetailJumbotronMask"
-            style={{ backgroundColor: "rgba(50, 50, 50, 0.7)" }}
-          />
+          <div className="w-100 MovieDetailJumbotronMask" style={{ backgroundColor: "rgba(50, 50, 50, 0.7)" }} />
           <div className="container MovieDetailJumbotron">
             <div className="row">
               <div className="col-md-4 col-sm-12 p-4 ">
@@ -256,7 +252,5 @@ class MovieDetailLoading extends Component {
     );
   }
 }
-
-MovieDetailLoading.propTypes = {};
 
 export default MovieDetailLoading;

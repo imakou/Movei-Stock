@@ -14,7 +14,7 @@ class MovieImages extends React.Component {
     this.getImgArr();
   }
 
-  getImgArr = value => {
+  getImgArr = () => {
     const { images } = this.props;
     const imgArr = [];
     shuffle(images.backdrops)
@@ -40,7 +40,7 @@ class MovieImages extends React.Component {
         style={{ marginBottom: "8px" }}
         onClick={() => this.showModal(e)}
       >
-        <img src={`https://image.tmdb.org/t/p/w500${e}`} className="img-fluid imgScale" />
+        <img src={`https://image.tmdb.org/t/p/w500${e}`} alt="" className="img-fluid imgScale" />
       </div>
     ));
   };
@@ -62,12 +62,7 @@ class MovieImages extends React.Component {
   render() {
     return (
       <div className="mb-5">
-        <StackGrid
-          monitorImagesLoaded
-          columnWidth={"33.33%"}
-          gutterWidth={8}
-          appeared={scaleDown.appeared}
-        >
+        <StackGrid monitorImagesLoaded columnWidth={"33.33%"} gutterWidth={8} appeared={scaleDown.appeared}>
           {this.renderImgs()}
         </StackGrid>
         <Modal
@@ -77,10 +72,7 @@ class MovieImages extends React.Component {
           footer={null}
           width="45vw"
         >
-          <img
-            className="img-fluid w-100"
-            src={`https://image.tmdb.org/t/p/original${this.state.imgUrl}`}
-          />
+          <img className="img-fluid w-100" src={`https://image.tmdb.org/t/p/original${this.state.imgUrl}`} alt="" />
         </Modal>
       </div>
     );

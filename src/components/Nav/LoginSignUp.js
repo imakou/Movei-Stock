@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Form, Icon, Input, Button, Checkbox, Modal, Tabs, Divider } from "antd";
+import { Form, Icon, Input, Button } from "antd";
 const FormItem = Form.Item;
-const TabPane = Tabs.TabPane;
 
 class LoginSignUp extends Component {
   handleSubmit = e => {
@@ -60,7 +59,9 @@ class LoginSignUp extends Component {
   }
 }
 
-LoginSignUp.propTypes = {};
+LoginSignUp.propTypes = {
+  form: PropTypes.object
+};
 const WrappedNormalLoginForm = Form.create()(LoginSignUp);
 
 export default WrappedNormalLoginForm;

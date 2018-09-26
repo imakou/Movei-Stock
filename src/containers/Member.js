@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Spin } from "antd";
-import * as Vibrant from "node-vibrant";
 import * as MemberActions from "../actions/MemberActions";
 import MemberContent from "../components/Member/MemberContent";
 
@@ -26,7 +25,7 @@ class Member extends Component {
 
   render() {
     console.log("Hello favoriteList", this.props.favoriteList); // log is here
-    const { favoriteListDetail } = this.props;
+    const { favoriteListDetail, profile } = this.props;
     console.log("Hello favoriteListDetail", favoriteListDetail); // log is here
     const JumbotomMoive = favoriteListDetail[Math.floor(Math.random() * favoriteListDetail.length)];
     console.log("Hello JumbotomMoive", JumbotomMoive); // log is here
@@ -46,16 +45,16 @@ class Member extends Component {
                   <div className="row">
                     <div className="col-md-12">
                       <div>
-                        <h1>Imakou</h1>
+                        <h2 className="mt-2">{profile.nickname}</h2>
                         <div className="row no-gutters MemberJumbotronDesc d-flex justify-content-start">
-                          <div className="">
+                          <div>
                             <h6>
                               <small>Member Type: Standard</small>
                             </h6>
                           </div>
                           <div className="">
                             <h6>
-                              <small>Collection: 5</small>
+                              <small>Collection: {favoriteListDetail.length}</small>
                             </h6>
                           </div>
                         </div>
@@ -83,12 +82,14 @@ class Member extends Component {
 }
 
 Member.propTypes = {
-  favoriteListDetail: PropTypes.array
+  favoriteListDetail: PropTypes.array,
+  profile: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
     favoriteList: state.member.favoriteList,
+    profile: state.member.profile,
     favoriteListDetail: state.member.favoriteListDetail
   };
 };
