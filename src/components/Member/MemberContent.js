@@ -20,7 +20,7 @@ class MemberContent extends Component {
 }
 
 MemberContent.propTypes = {
-  favoriteListDetail: PropTypes.func.isRequired,
+  favoriteListDetail: PropTypes.array.isRequired,
   delete_favorite_movie: PropTypes.func.isRequired
 };
 

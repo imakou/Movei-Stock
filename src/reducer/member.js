@@ -3,6 +3,7 @@ import { MEMBER_ACTIONS } from "../actions/MemberActions";
 const initialState = {
   profile: undefined,
   loginRequired: false,
+  favoriteListStatus: "pending",
   favoriteList: [],
   favoriteListDetail: []
 };
@@ -35,7 +36,8 @@ export const member = (state = initialState, action) => {
     case MEMBER_ACTIONS.FETCH_FAVORITE_LIST_SUCCESSFUL:
       return {
         ...state,
-        favoriteList: action.FavoriteList
+        favoriteList: action.FavoriteList,
+        favoriteListStatus: "done"
       };
     case MEMBER_ACTIONS.DELETE_FAVORITE_MOVIE_SUCCESSFUL:
       return {
@@ -46,6 +48,11 @@ export const member = (state = initialState, action) => {
       return {
         ...state,
         favoriteListDetail: action.favoriteListDetail
+      };
+    case MEMBER_ACTIONS.UPDATE_FAVORITE_LIST_STATUS_SUCCESSFUL:
+      return {
+        ...state,
+        favoriteListStatus: action.status
       };
     case MEMBER_ACTIONS.MEMBER_LOGOUT_SUCCESSFUL:
       return {

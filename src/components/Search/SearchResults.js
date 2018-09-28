@@ -9,7 +9,15 @@ class SearchResults extends Component {
   renderMovies = () => {
     const { searchedMovies } = this.props;
     if (searchedMovies.length !== 0) {
-      return searchedMovies.map(e => <MovieCard favoriteList={this.props.favoriteList} key={e.id} data={e} />);
+      return searchedMovies.map(e => (
+        <MovieCard
+          add_movie_to_favorite={this.props.add_movie_to_favorite}
+          delete_favorite_movie={this.props.delete_favorite_movie}
+          favoriteList={this.props.favoriteList}
+          key={e.id}
+          data={e}
+        />
+      ));
     } else {
       return null;
     }

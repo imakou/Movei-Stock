@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Spin } from "antd";
+import { Spin, Alert } from "antd";
 import * as MemberActions from "../actions/MemberActions";
 import MemberContent from "../components/Member/MemberContent";
 
@@ -25,14 +25,18 @@ class Member extends Component {
 
   render() {
     console.log("Hello favoriteList", this.props.favoriteList); // log is here
-    const { favoriteListDetail, profile } = this.props;
+    const { favoriteListDetail, profile, favoriteListStatus } = this.props;
     console.log("Hello favoriteListDetail", favoriteListDetail); // log is here
     const JumbotomMoive = favoriteListDetail[Math.floor(Math.random() * favoriteListDetail.length)];
     console.log("Hello JumbotomMoive", JumbotomMoive); // log is here
 
     return (
       <React.Fragment>
-        {favoriteListDetail.length !== 0 ? (
+        {favoriteListStatus === "null" ? (
+          <div className="d-flex justify-content-center w-100 mt-5 mb-5">
+            <Alert message="Opps..." description="You've not added any favorite movies." type="info" />
+          </div>
+        ) : favoriteListDetail.length !== 0 ? (
           <React.Fragment>
             <section
               style={{
@@ -82,15 +86,21 @@ class Member extends Component {
 }
 
 Member.propTypes = {
+  favoriteList: PropTypes.array,
   favoriteListDetail: PropTypes.array,
-  profile: PropTypes.object
+  profile: PropTypes.object,
+  fetch_favorite_list: PropTypes.func,
+  delete_favorite_movie: PropTypes.func,
+  fetch_favorite_list_detail: PropTypes.func,
+  favoriteListStatus: PropTypes.string
 };
 
 const mapStateToProps = state => {
   return {
     favoriteList: state.member.favoriteList,
     profile: state.member.profile,
-    favoriteListDetail: state.member.favoriteListDetail
+    favoriteListDetail: state.member.favoriteListDetail,
+    favoriteListStatus: state.member.favoriteListStatus
   };
 };
 

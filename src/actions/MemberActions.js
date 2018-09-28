@@ -6,7 +6,8 @@ export const MEMBER_ACTIONS = {
   ADD_MOVIE_TO_FAVORITE_SUCCESSFUL: "ADD_MOVIE_TO_FAVORITE_SUCCESSFUL",
   FETCH_FAVORITE_LIST_SUCCESSFUL: "FETCH_FAVORITE_LIST_SUCCESSFUL",
   DELETE_FAVORITE_MOVIE_SUCCESSFUL: "DELETE_FAVORITE_MOVIE_SUCCESSFUL",
-  FETCH_FAVORITE_LIST_DETAIL_SUCCESSFUL: "FETCH_FAVORITE_LIST_DETAIL_SUCCESSFUL"
+  FETCH_FAVORITE_LIST_DETAIL_SUCCESSFUL: "FETCH_FAVORITE_LIST_DETAIL_SUCCESSFUL",
+  UPDATE_FAVORITE_LIST_STATUS_SUCCESSFUL: "UPDATE_FAVORITE_LIST_STATUS_SUCCESSFUL"
 };
 
 const token = localStorage.getItem("MStoken"); // how to validate if token is valid ?
@@ -42,6 +43,13 @@ function fetch_favorite_list_successful(favoriteList) {
   return {
     type: MEMBER_ACTIONS.FETCH_FAVORITE_LIST_SUCCESSFUL,
     FavoriteList
+  };
+}
+
+function update_favorite_list_status_successful(status) {
+  return {
+    type: MEMBER_ACTIONS.UPDATE_FAVORITE_LIST_STATUS_SUCCESSFUL,
+    status
   };
 }
 
@@ -122,7 +130,11 @@ export function fetch_favorite_list() {
   return async dispatch => {
     try {
       const { data: favoriteList } = await AxiosAuth.get(`/favorites`, headers);
-      dispatch(fetch_favorite_list_successful(favoriteList));
+      if (favoriteList.length !== 0) {
+        dispatch(fetch_favorite_list_successful(favoriteList));
+      } else {
+        dispatch(update_favorite_list_status_successful("null"));
+      }
     } catch (error) {
       console.log("Hello fetch_favorite_list", error); // log is here
     }

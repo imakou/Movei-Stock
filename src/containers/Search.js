@@ -5,6 +5,7 @@ import SearchFilter from "../components/Search/SearchFilter";
 import SearchResults from "../components/Search/SearchResults";
 import TvNoSignal from "../media/tv_no_signal.mp4";
 import * as actions from "../actions/MovieActions";
+import * as MemberActions from "../actions/MemberActions";
 
 class Search extends Component {
   renderBG = () => {
@@ -49,6 +50,8 @@ class Search extends Component {
             favoriteList={this.props.favoriteList}
             searchedMovies={this.props.searchedMovies}
             searchedMoviesTotalPage={this.props.searchedMoviesTotalPage}
+            add_movie_to_favorite={this.props.add_movie_to_favorite}
+            delete_favorite_movie={this.props.delete_favorite_movie}
           />
         </div>
       </div>
@@ -89,6 +92,12 @@ const mapDispatchToProps = dispatch => {
     },
     empty_search_movies: () => {
       dispatch(actions.empty_search_movies());
+    },
+    add_movie_to_favorite: movie_id => {
+      dispatch(MemberActions.add_movie_to_favorite(movie_id));
+    },
+    delete_favorite_movie: movie_id => {
+      dispatch(MemberActions.delete_favorite_movie(movie_id));
     }
   };
 };
