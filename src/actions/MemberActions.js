@@ -10,13 +10,6 @@ export const MEMBER_ACTIONS = {
   UPDATE_FAVORITE_LIST_STATUS_SUCCESSFUL: "UPDATE_FAVORITE_LIST_STATUS_SUCCESSFUL"
 };
 
-const token = localStorage.getItem("MStoken"); // how to validate if token is valid ?
-const headers = {
-  headers: {
-    authorization: token
-  }
-};
-
 // ————— call by actions —————
 
 function fetch_profile_successful(profile) {
@@ -129,6 +122,12 @@ export function update_loging_request(loginStatus) {
 export function fetch_favorite_list() {
   return async dispatch => {
     try {
+      let token = localStorage.getItem("MStoken"); // how to validate if token is valid ?
+      let headers = {
+        headers: {
+          authorization: token
+        }
+      };
       const { data: favoriteList } = await AxiosAuth.get(`/favorites`, headers);
       if (favoriteList.length !== 0) {
         dispatch(fetch_favorite_list_successful(favoriteList));
@@ -159,8 +158,15 @@ export function fetch_favorite_list_detail(favList) {
 export function add_movie_to_favorite(movie_id) {
   return async (dispatch, getState) => {
     try {
+      let token = localStorage.getItem("MStoken"); // how to validate if token is valid ?
+      let headers = {
+        headers: {
+          authorization: token
+        }
+      };
       const favoriteList = getState().member.favoriteList;
       const isNotExist = favoriteList.indexOf(String(movie_id)) === -1;
+
       if (token && isNotExist) {
         const { id } = await AxiosAuth.post(`/favorite`, { movie_id: String(movie_id) }, headers);
         dispatch(add_movie_to_favorite_successful(favoriteList, { id, movie_id: String(movie_id) }));
@@ -176,6 +182,12 @@ export function add_movie_to_favorite(movie_id) {
 export function delete_favorite_movie(movie_id) {
   return async (dispatch, getState) => {
     try {
+      let token = localStorage.getItem("MStoken"); // how to validate if token is valid ?
+      let headers = {
+        headers: {
+          authorization: token
+        }
+      };
       const favoriteList = getState().member.favoriteList;
       const isExist = favoriteList.map(e => e.movie_id).indexOf(String(movie_id)) !== -1;
       if (token && isExist) {

@@ -40,7 +40,9 @@ class Member extends Component {
           <React.Fragment>
             <section
               style={{
-                backgroundImage: `url("https://image.tmdb.org/t/p/w1400_and_h450_face/${JumbotomMoive.backdrop_path}")`
+                backgroundImage: `url("https://image.tmdb.org/t/p/w1400_and_h450_face/${
+                  JumbotomMoive.backdrop_path
+                }")`
               }}
               className="MemberJumbotron d-flex align-items-end"
             >
@@ -49,7 +51,7 @@ class Member extends Component {
                   <div className="row">
                     <div className="col-md-12">
                       <div>
-                        <h2 className="mt-2">{profile.nickname}</h2>
+                        {profile ? <h2 className="mt-2">{profile.nickname}</h2> : null}
                         <div className="row no-gutters MemberJumbotronDesc d-flex justify-content-start">
                           <div>
                             <h6>
