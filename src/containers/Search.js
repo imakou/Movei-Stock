@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import SearchFilter from "../components/Search/SearchFilter";
 import SearchResults from "../components/Search/SearchResults";
-import TvNoSignal from "../media/tv_no_signal.mp4";
 import * as actions from "../actions/MovieActions";
 import * as MemberActions from "../actions/MemberActions";
 
@@ -11,11 +10,7 @@ class Search extends Component {
   renderBG = () => {
     const { searchedMovies } = this.props;
     if (searchedMovies.length === 0) {
-      return (
-        <video loop muted autoPlay className="fullscreen-bg__video">
-          <source src={TvNoSignal} type="video/mp4" />
-        </video>
-      );
+      return <div className="fullscreen-bg__video" />;
     } else {
       const BGUrl = searchedMovies[0].backdrop_path;
       return (
