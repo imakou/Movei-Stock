@@ -290,22 +290,6 @@ body {
 .fullscreen-bg {
   background-image: url(http://klevinskaitej.files.wordpress.com/2012/11/noise1.gif); }
 
-.fullscreen-bg__video {
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-size: cover;
-  position: fixed; }
-  .fullscreen-bg__video img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    min-width: 50%;
-    min-height: 50%; }
-
 .fullscreen-bg {
   position: absolute;
   top: 0;

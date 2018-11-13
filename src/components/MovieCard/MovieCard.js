@@ -22,7 +22,9 @@ class MovieCard extends Component {
               type="primary"
               shape="circle"
               icon={`${isFavorite ? "heart" : "heart-o"}`}
-              onClick={isFavorite ? () => this.deleteFromFavorite(data.id) : () => this.addToFavorite(data.id)}
+              onClick={
+                isFavorite ? () => this.deleteFromFavorite(data.id) : () => this.addToFavorite(data.id)
+              }
             />
             <Link to={`/movie/${data.id}`}>
               {data.poster_path ? (
