@@ -5,7 +5,7 @@ const FavoriteIcon = props => {
   const { isfavorite } = props;
   return (
     <button {...props} type="button" className="btn btn-danger">
-      <Icon className="mr-1" type={isfavorite ? "heart" : "heart-o"} /> Favorite
+      <Icon className="mr-1" type={"heart"} theme={isfavorite && "filled"} /> Favorite
     </button>
   );
 };

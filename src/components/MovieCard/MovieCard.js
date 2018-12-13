@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button } from "antd";
+import { Button, Icon } from "antd";
 import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
@@ -21,11 +21,13 @@ class MovieCard extends Component {
               className={`MovieCardFavBtn bg-danger ${isFavorite && "MovieCardFavBtnShow"}`}
               type="primary"
               shape="circle"
-              icon={`${isFavorite ? "heart" : "heart-o"}`}
               onClick={
                 isFavorite ? () => this.deleteFromFavorite(data.id) : () => this.addToFavorite(data.id)
               }
-            />
+            >
+              {/* icon={`${isFavorite ? "heart" : "heart-o"}`} */}
+              <Icon type="heart" theme={isFavorite && "filled"} />
+            </Button>
             <Link to={`/movie/${data.id}`}>
               {data.poster_path ? (
                 <img
